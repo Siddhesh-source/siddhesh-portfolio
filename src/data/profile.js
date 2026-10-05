@@ -8,6 +8,7 @@ export const profile = {
     { label: 'GitHub', href: 'https://github.com/Siddhesh-source' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/siddhesh-chaudhari3011' },
     { label: 'X', href: 'https://x.com/csiddhesh3011' },
+    {label: 'E-mail', href : 'csiddhesh3011@gmail.com'},
   ],
   experience: [
     { org: 'InnovateMore (Rink9)', what: 'Worked on the backend service API and the web app.', stack: 'Spring Boot · Next.js · TypeScript' },
