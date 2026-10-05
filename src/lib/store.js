@@ -1,5 +1,6 @@
 // Tiny persisted store. localStorage may be blocked or full, so every access is guarded.
-const KEY = 'console.v1';
+// Bump the version to reset everyone's stored view preferences back to the defaults (compact density).
+const KEY = 'console.v2';
 
 const defaults = () => ({
   tabs: ['readme'], active: 'readme',
