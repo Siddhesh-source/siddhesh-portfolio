@@ -1,7 +1,7 @@
 export const profile = {
   name: 'Siddhesh Chaudhari',
   title: 'I build software end to end.',
-  lede: 'Software engineer, SDE first. I build products end to end across the stack, with real depth in AI, ML and infra, on top of strong fundamentals in DBMS, networks, operating systems and DSA.',
+  lede: 'Software engineer, SDE first. Full stack, with real depth in AI, ML and infra, on strong fundamentals in DBMS, networks, operating systems and DSA.',
   email: 'csiddhesh3011@gmail.com',
   education: [{ school: 'Vishwakarma Institute of Technology', years: '2024 to 2028' }],
   links: [
