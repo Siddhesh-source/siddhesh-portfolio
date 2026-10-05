@@ -103,10 +103,10 @@ Radius hierarchy: sm 4px for chips and inputs, md 8px for buttons, lg 12px for w
 
 ## Components
 
-- **Chapter:** full-viewport section with number label, display headline, text column, widget panel.
+- **Chapter:** full-viewport section with display headline, display numeral with mono caption, text column, tabbed panel (Try it, Architecture). No number label or kicker above the headline.
 - **Widget:** bordered panel, mono type. Every widget has a visible state, a reset, and an honest label when data is illustrative.
 - **Diagram:** inline SVG with draggable nodes and a trace control. Keyboard operable.
-- **Chapter rail:** fixed dots with progress. Links to chapters.
+- **Chapter rail:** fixed dots with progress. Links to chapters. j and k move between chapters.
 - **Command palette:** Ctrl K, lists chapters and links.
 - **States:** hover raises contrast, focus-visible uses a 2px outline in the text colour with 3px offset, disabled drops to 40 percent opacity.
 

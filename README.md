@@ -1,38 +1,47 @@
 # portfolio
 
-Personal developer portfolio. A single static page: plain HTML, CSS and JavaScript with no build step and no dependencies.
+Personal developer portfolio: poster-scale colour chapters, one per project, each with a live widget and a draggable architecture diagram. Static site, native ES modules, **no build step and no dependencies**.
 
-## Features
-
-- Project index where each row opens to its real artifact: architecture flow, boot log, benchmark, request path
-- Hero diagram of the Whispr message flow that draws itself once
-- Dark and light themes (follows system preference, persisted), one amber accent
-- Command palette (`Ctrl/Cmd + K`) for sections, projects and links
-- Self-hosted fonts, no external requests; works without JavaScript for static content
-- Respects `prefers-reduced-motion`; responsive down to phone width; 44px touch targets
-
-Design rules and tokens live in `DESIGN.md`.
-
-## Run locally
-
-Open `index.html` in a browser, or serve the folder:
+## Run
 
 ```sh
-python -m http.server 8000
+npm start          # python -m http.server 8000, then open http://localhost:8000
+npm run check      # contrast (WCAG AA) + project data + simulation invariants (Node 20+)
 ```
+
+ES modules need HTTP, so opening `index.html` from disk will not work. Any static host works (GitHub Pages, Netlify, Vercel): publish the repo root.
 
 ## Structure
 
 ```
-index.html   markup and sections
-styles.css   theme tokens, layout, components
-script.js    project and stack data, rendering, palette, theme
-fonts/       self-hosted woff2 files
-DESIGN.md    design intent, tokens, rules
+index.html              shell: fonts, stylesheets, <main id="app">, module entry
+src/
+  main.js               composes chapters, rail and command palette
+  data/                 content only
+    projects.js         one entry per project chapter (copy, numeral, stack, diagram)
+    profile.js          name, links, experience, stack
+  components/           UI building blocks (no content)
+    chapter.js hero.js closing.js diagram.js rail.js palette.js
+  widgets/              one live demo per project, lazy-loaded
+    index.js            registry: project id -> module
+  styles/
+    tokens.css          colours, type, spacing, chapter themes (from DESIGN.md)
+    base.css layout.css components.css
+  lib/dom.js            tiny h()/s() element helpers
+assets/
+  fonts/                self-hosted woff2 (Cabinet Grotesk, General Sans, JetBrains Mono)
+  favicon.svg
+scripts/check.mjs       zero-dependency checks
+docs/ARCHITECTURE.md    how to extend it
+DESIGN.md               design intent, tokens, rules (source of truth for visuals)
 ```
 
-Project, stack and role content lives in the data constants at the top of `script.js`.
+## Add a project
 
-## Deploy
+See `docs/ARCHITECTURE.md`. In short: data entry, widget module, registry line, theme in `tokens.css`, then `npm run check`.
 
-Works as-is on GitHub Pages, Netlify or Vercel: publish the repository root.
+## Principles
+
+- Content lives in `src/data`, behaviour in `src/components` and `src/widgets`, look in `src/styles`.
+- Every claim traces to a repository. Simulations and illustrative values are labelled on the page.
+- Works without a framework, a bundler or a lockfile.
