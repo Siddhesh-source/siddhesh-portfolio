@@ -1,126 +1,25 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Siddhesh Chaudhari · Software engineer</title>
-  <meta name="description" content="Software engineer building end-to-end products, with a focus on distributed systems, scaling and efficient system design.">
+  <meta name="description" content="Software engineer: full stack, AI/ML and infra, with a bias for the layers underneath. Distributed systems, scaling and efficient design.">
   <meta property="og:title" content="Siddhesh Chaudhari · Software engineer">
-  <meta property="og:description" content="End-to-end engineering with a bias for the layers underneath: kernels, CUDA, crypto, distributed systems.">
+  <meta property="og:description" content="I build systems end to end. Live demos of Whispr, NexusOS, ccml, Flash Sale, Quatarly and a trading engine.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0e1114">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e1114'/%3E%3Cpath d='M9 12l-4 4 4 4M23 12l4 4-4 4M18 9l-4 14' stroke='%23f2b138' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <script>document.documentElement.classList.add("js")</script>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#0c0f12">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="src/styles/tokens.css">
+  <link rel="stylesheet" href="src/styles/base.css">
+  <link rel="stylesheet" href="src/styles/layout.css">
+  <link rel="stylesheet" href="src/styles/components.css">
 </head>
 <body>
-  <a class="skip" href="#work">Skip to work</a>
-
-  <header class="nav">
-    <a class="logo" href="#top">Siddhesh Chaudhari</a>
-    <nav aria-label="Primary">
-      <a href="#work">Work</a>
-      <a href="#experience">Experience</a>
-      <a href="#about">About</a>
-      <a href="#stack">Stack</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="nav-actions">
-      <button class="btn-quiet kbd-btn" id="open-palette" aria-label="Open command palette"><kbd>Ctrl</kbd><kbd>K</kbd></button>
-      <button class="btn-quiet" id="theme" aria-label="Toggle theme"></button>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero wrap">
-      <div class="hero-copy">
-        <h1>Software engineer. Full stack, with a bias for the layers underneath.</h1>
-        <p class="lead">I take products from schema to screen, then go read what runs below them: kernels, GPU kernels, crypto protocols, caches and queues. I care most about distributed systems, scaling and designs that stay efficient as they grow.</p>
-        <p class="links">
-          <a class="cta" href="#work">See the work</a>
-          <a href="https://github.com/Siddhesh-source" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/siddhesh-chaudhari3011" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://x.com/csiddhesh3011" target="_blank" rel="noopener">X</a>
-        </p>
-      </div>
-
-      <figure class="hero-fig" aria-labelledby="fig-cap">
-        <svg id="flow" viewBox="0 0 520 300" role="img" aria-label="Whispr message flow: client A encrypts with libsignal, a Go relay stores only ciphertext in Postgres and S3, client B decrypts.">
-          <defs>
-            <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="currentColor"/></marker>
-          </defs>
-          <g class="box">
-            <rect x="10" y="20" width="130" height="64" rx="8"/><text x="75" y="46" class="t-h">Client A</text><text x="75" y="64" class="t-s">Kotlin · Android</text>
-            <rect x="10" y="216" width="130" height="64" rx="8"/><text x="75" y="242" class="t-h">Client B</text><text x="75" y="260" class="t-s">Kotlin · Android</text>
-            <rect x="195" y="108" width="130" height="84" rx="8" class="hot"/><text x="260" y="138" class="t-h">Go relay</text><text x="260" y="156" class="t-s">REST + WebSocket</text><text x="260" y="174" class="t-s hotc">ciphertext only</text>
-            <rect x="380" y="20" width="130" height="64" rx="8"/><text x="445" y="46" class="t-h">PostgreSQL</text><text x="445" y="64" class="t-s">envelopes</text>
-            <rect x="380" y="216" width="130" height="64" rx="8"/><text x="445" y="242" class="t-h">S3 storage</text><text x="445" y="260" class="t-s">encrypted media</text>
-          </g>
-          <g class="wire" fill="none" marker-end="url(#ah)">
-            <path d="M140 52 H168 Q195 52 195 80 V120" pathLength="1"/>
-            <path d="M260 108 V84 Q260 52 290 52 H380" pathLength="1"/>
-            <path d="M325 150 H352 Q380 150 380 180 V216" pathLength="1"/>
-            <path d="M195 170 V220 Q195 248 168 248 H140" pathLength="1"/>
-          </g>
-          <g class="tags">
-            <text x="150" y="40" class="t-tag">encrypt</text>
-            <text x="150" y="272" class="t-tag">decrypt</text>
-          </g>
-        </svg>
-        <figcaption id="fig-cap"><span class="mono">Whispr</span> · end-to-end encrypted Android messenger. libsignal (PQXDH, Double Ratchet). The server relays and stores ciphertext only. <span class="soon">Open-sourcing soon.</span></figcaption>
-      </figure>
-    </section>
-
-    <section id="work" class="wrap">
-      <h2>Selected work</h2>
-      <div class="index" id="index"></div>
-      <p class="note">More on <a href="https://github.com/Siddhesh-source?tab=repositories" target="_blank" rel="noopener">GitHub</a>: AgentOS, StudySathi, NewsNexus, Pre-Delinquency Engine and others.</p>
-    </section>
-
-    <section id="experience" class="wrap">
-      <h2>Experience</h2>
-      <dl class="rows">
-        <div><dt>InnovateMore · Rink9</dt><dd>Worked on the product's backend service API and web app.<span class="stk">Spring Boot · Next.js · TypeScript</span></dd></div>
-        <div><dt>TaxBharo</dt><dd>Automated ITR filings and handled backend-to-frontend integration.<span class="stk">Python · Java · Playwright</span></dd></div>
-      </dl>
-    </section>
-
-    <section id="about" class="wrap">
-      <h2>About</h2>
-      <div class="prose">
-        <p>I like owning a feature from schema to screen, and I like knowing why it is fast or slow. That pulls me toward the layers most product work ignores: an OS scheduler, a CUDA kernel, the exact guarantees of a messaging protocol.</p>
-        <p>Right now I am working on Whispr, an end-to-end encrypted messenger with a Go backend, a from-scratch x86-64 kernel (NexusOS), and agentic AI and LLM inference tooling.</p>
-      </div>
-    </section>
-
-    <section id="stack" class="wrap">
-      <h2>Stack</h2>
-      <dl class="rows" id="stack-list"></dl>
-    </section>
-
-    <section id="contact" class="wrap">
-      <h2>Contact</h2>
-      <p class="prose">Open to interesting engineering problems, especially distributed systems, infra and AI products.</p>
-      <p class="links big">
-        <a href="https://www.linkedin.com/in/siddhesh-chaudhari3011" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/Siddhesh-source" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://x.com/csiddhesh3011" target="_blank" rel="noopener">X</a>
-      </p>
-    </section>
-  </main>
-
-  <footer class="foot wrap">
-    <span>© <span id="year"></span> Siddhesh Chaudhari</span>
-    <span>Plain HTML, CSS and JS. Press <kbd>Ctrl</kbd> <kbd>K</kbd></span>
-  </footer>
-
-  <div class="palette" id="palette" hidden>
-    <div class="palette-box" role="dialog" aria-modal="true" aria-label="Command palette">
-      <input id="palette-input" type="text" placeholder="Jump to a section, project or link" autocomplete="off" spellcheck="false" aria-label="Search commands">
-      <ul id="palette-list"></ul>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <a class="skip" href="#whispr">Skip to projects</a>
+  <main id="app"></main>
+  <noscript><p style="padding:2rem;max-width:40rem">This portfolio uses JavaScript for its live demos. Projects: Whispr, NexusOS, ccml, Flash Sale, Quatarly, Trading Engine. See <a href="https://github.com/Siddhesh-source">github.com/Siddhesh-source</a>.</p></noscript>
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>
