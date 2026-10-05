@@ -3,144 +3,120 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Siddhesh Chaudhari · SDE · Full stack, AI/ML &amp; Infra</title>
-  <meta name="description" content="Software engineer building end-to-end products across the stack, with a focus on distributed systems, scaling and efficient system design.">
-  <meta name="theme-color" content="#0f1117">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f1117'/%3E%3Cpath d='M9 12l-4 4 4 4M23 12l4 4-4 4M18 9l-4 14' stroke='%237aa2f7' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <title>Siddhesh Chaudhari · Software engineer</title>
+  <meta name="description" content="Software engineer building end-to-end products, with a focus on distributed systems, scaling and efficient system design.">
+  <meta property="og:title" content="Siddhesh Chaudhari · Software engineer">
+  <meta property="og:description" content="End-to-end engineering with a bias for the layers underneath: kernels, CUDA, crypto, distributed systems.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0e1114">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e1114'/%3E%3Cpath d='M9 12l-4 4 4 4M23 12l4 4-4 4M18 9l-4 14' stroke='%23f2b138' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <script>document.documentElement.classList.add("js")</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="progress" id="progress"></div>
-  <canvas id="bg" aria-hidden="true"></canvas>
-  <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+  <a class="skip" href="#work">Skip to work</a>
 
   <header class="nav">
-    <a class="logo" href="#top" aria-label="Home"><span class="prompt">~/</span>siddhesh</a>
+    <a class="logo" href="#top">Siddhesh Chaudhari</a>
     <nav aria-label="Primary">
-      <a href="#about">About</a>
       <a href="#work">Work</a>
-      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
       <a href="#stack">Stack</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-actions">
-      <button class="kbd-btn" id="open-palette" aria-label="Open command palette"><kbd>Ctrl</kbd><kbd>K</kbd></button>
-      <button class="icon-btn" id="theme" aria-label="Toggle theme"></button>
+      <button class="btn-quiet kbd-btn" id="open-palette" aria-label="Open command palette"><kbd>Ctrl</kbd><kbd>K</kbd></button>
+      <button class="btn-quiet" id="theme" aria-label="Toggle theme"></button>
     </div>
   </header>
 
   <main id="top">
-    <!-- Hero -->
     <section class="hero wrap">
-      <div class="hero-copy reveal">
-        <p class="eyebrow"><span class="dot"></span>Pune, India · Software engineer</p>
-        <h1>Siddhesh <span class="grad">Chaudhari</span></h1>
-        <p class="role"><span id="typed"></span><span class="caret">|</span></p>
-        <p class="lead">I build whole products, from UI and API to database and deployment, and I want to know what runs underneath them. Focus: <strong>distributed systems, scaling and efficient system design</strong>, with AI, ML and infra on top.</p>
-        <div class="cta">
-          <a class="btn primary" href="#projects">View projects <span aria-hidden="true">→</span></a>
-          <a class="btn" href="https://github.com/Siddhesh-source" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/siddhesh-chaudhari3011" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
+      <div class="hero-copy">
+        <h1>Software engineer. Full stack, with a bias for the layers underneath.</h1>
+        <p class="lead">I take products from schema to screen, then go read what runs below them: kernels, GPU kernels, crypto protocols, caches and queues. I care most about distributed systems, scaling and designs that stay efficient as they grow.</p>
+        <p class="links">
+          <a class="cta" href="#work">See the work</a>
+          <a href="https://github.com/Siddhesh-source" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/siddhesh-chaudhari3011" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://x.com/csiddhesh3011" target="_blank" rel="noopener">X</a>
+        </p>
       </div>
 
-      <div class="term reveal" aria-label="Terminal summary">
-        <div class="term-bar"><i></i><i></i><i></i><span>~/siddhesh — zsh</span></div>
-        <pre id="term-body" class="term-body"></pre>
-      </div>
+      <figure class="hero-fig" aria-labelledby="fig-cap">
+        <svg id="flow" viewBox="0 0 520 300" role="img" aria-label="Whispr message flow: client A encrypts with libsignal, a Go relay stores only ciphertext in Postgres and S3, client B decrypts.">
+          <defs>
+            <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="currentColor"/></marker>
+          </defs>
+          <g class="box">
+            <rect x="10" y="20" width="130" height="64" rx="8"/><text x="75" y="46" class="t-h">Client A</text><text x="75" y="64" class="t-s">Kotlin · Android</text>
+            <rect x="10" y="216" width="130" height="64" rx="8"/><text x="75" y="242" class="t-h">Client B</text><text x="75" y="260" class="t-s">Kotlin · Android</text>
+            <rect x="195" y="108" width="130" height="84" rx="8" class="hot"/><text x="260" y="138" class="t-h">Go relay</text><text x="260" y="156" class="t-s">REST + WebSocket</text><text x="260" y="174" class="t-s hotc">ciphertext only</text>
+            <rect x="380" y="20" width="130" height="64" rx="8"/><text x="445" y="46" class="t-h">PostgreSQL</text><text x="445" y="64" class="t-s">envelopes</text>
+            <rect x="380" y="216" width="130" height="64" rx="8"/><text x="445" y="242" class="t-h">S3 storage</text><text x="445" y="260" class="t-s">encrypted media</text>
+          </g>
+          <g class="wire" fill="none" marker-end="url(#ah)">
+            <path d="M140 52 H168 Q195 52 195 80 V120" pathLength="1"/>
+            <path d="M260 108 V84 Q260 52 290 52 H380" pathLength="1"/>
+            <path d="M325 150 H352 Q380 150 380 180 V216" pathLength="1"/>
+            <path d="M195 170 V220 Q195 248 168 248 H140" pathLength="1"/>
+          </g>
+          <g class="tags">
+            <text x="150" y="40" class="t-tag">encrypt</text>
+            <text x="150" y="272" class="t-tag">decrypt</text>
+          </g>
+        </svg>
+        <figcaption id="fig-cap"><span class="mono">Whispr</span> · end-to-end encrypted Android messenger. libsignal (PQXDH, Double Ratchet). The server relays and stores ciphertext only. <span class="soon">Open-sourcing soon.</span></figcaption>
+      </figure>
     </section>
 
-    <!-- Metrics -->
-    <section class="wrap metrics reveal" aria-label="GitHub snapshot">
-      <div class="metric"><b data-count="27" id="m-repos">27</b><span>public repos</span></div>
-      <div class="metric"><b data-count="14" id="m-followers">14</b><span>followers</span></div>
-      <div class="metric"><b data-count="8" id="m-langs">8</b><span>languages</span></div>
-      <div class="metric"><b data-count="223">223</b><span>in-kernel boot tests</span></div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="wrap">
-      <h2 class="reveal"><span class="idx">01</span>About</h2>
-      <div class="about-grid">
-        <div class="card reveal">
-          <h3>Build</h3>
-          <p>Full-stack apps, ML and AI systems, real-time backends. Comfortable owning a feature from schema to screen.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Go deep</h3>
-          <p>OS internals, CUDA kernels, encrypted messaging and concurrency. I read the source when the abstraction leaks.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Care about</h3>
-          <p>Correctness under load, scaling, and simple designs that stay efficient as they grow.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Work -->
     <section id="work" class="wrap">
-      <h2 class="reveal"><span class="idx">02</span>Work</h2>
-      <ol class="timeline">
-        <li class="reveal">
-          <span class="node" style="--c:var(--blue)"></span>
-          <div class="card">
-            <div class="row"><h3>InnovateMore <span class="muted">· Rink9</span></h3><span class="tag">Backend + Web</span></div>
-            <p>Worked on the product's backend service API and web app.</p>
-            <div class="chips"><span>Spring Boot</span><span>Next.js</span><span>TypeScript</span></div>
-          </div>
-        </li>
-        <li class="reveal">
-          <span class="node" style="--c:var(--yellow)"></span>
-          <div class="card">
-            <div class="row"><h3>TaxBharo</h3><span class="tag">Automation</span></div>
-            <p>Automated ITR filings and handled backend-to-frontend integration.</p>
-            <div class="chips"><span>Python</span><span>Java</span><span>Playwright</span></div>
-          </div>
-        </li>
-      </ol>
+      <h2>Selected work</h2>
+      <div class="index" id="index"></div>
+      <p class="note">More on <a href="https://github.com/Siddhesh-source?tab=repositories" target="_blank" rel="noopener">GitHub</a>: AgentOS, StudySathi, NewsNexus, Pre-Delinquency Engine and others.</p>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="wrap">
-      <h2 class="reveal"><span class="idx">03</span>Projects</h2>
-      <div class="filters reveal" id="filters" role="tablist" aria-label="Filter projects"></div>
-      <div class="grid" id="grid"></div>
-      <p class="more reveal">More on <a href="https://github.com/Siddhesh-source?tab=repositories" target="_blank" rel="noopener">GitHub →</a> · AgentOS, StudySathi, NewsNexus, Pre-Delinquency Engine and others.</p>
+    <section id="experience" class="wrap">
+      <h2>Experience</h2>
+      <dl class="rows">
+        <div><dt>InnovateMore · Rink9</dt><dd>Worked on the product's backend service API and web app.<span class="stk">Spring Boot · Next.js · TypeScript</span></dd></div>
+        <div><dt>TaxBharo</dt><dd>Automated ITR filings and handled backend-to-frontend integration.<span class="stk">Python · Java · Playwright</span></dd></div>
+      </dl>
     </section>
 
-    <!-- Stack -->
-    <section id="stack" class="wrap">
-      <h2 class="reveal"><span class="idx">04</span>Stack</h2>
-      <div class="stack reveal" id="stack-grid"></div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="wrap">
-      <div class="contact card reveal">
-        <h2><span class="idx">05</span>Let's talk</h2>
-        <p>Open to interesting engineering problems, especially distributed systems, infra and AI products.</p>
-        <div class="cta">
-          <a class="btn primary" href="https://www.linkedin.com/in/siddhesh-chaudhari3011" target="_blank" rel="noopener">Message on LinkedIn</a>
-          <a class="btn" href="https://x.com/csiddhesh3011" target="_blank" rel="noopener">X</a>
-          <a class="btn" href="https://github.com/Siddhesh-source" target="_blank" rel="noopener">GitHub</a>
-        </div>
+    <section id="about" class="wrap">
+      <h2>About</h2>
+      <div class="prose">
+        <p>I like owning a feature from schema to screen, and I like knowing why it is fast or slow. That pulls me toward the layers most product work ignores: an OS scheduler, a CUDA kernel, the exact guarantees of a messaging protocol.</p>
+        <p>Right now I am working on Whispr, an end-to-end encrypted messenger with a Go backend, a from-scratch x86-64 kernel (NexusOS), and agentic AI and LLM inference tooling.</p>
       </div>
+    </section>
+
+    <section id="stack" class="wrap">
+      <h2>Stack</h2>
+      <dl class="rows" id="stack-list"></dl>
+    </section>
+
+    <section id="contact" class="wrap">
+      <h2>Contact</h2>
+      <p class="prose">Open to interesting engineering problems, especially distributed systems, infra and AI products.</p>
+      <p class="links big">
+        <a href="https://www.linkedin.com/in/siddhesh-chaudhari3011" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/Siddhesh-source" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://x.com/csiddhesh3011" target="_blank" rel="noopener">X</a>
+      </p>
     </section>
   </main>
 
   <footer class="foot wrap">
     <span>© <span id="year"></span> Siddhesh Chaudhari</span>
-    <span class="muted">Plain HTML, CSS and JS · press <kbd>Ctrl</kbd> <kbd>K</kbd></span>
+    <span>Plain HTML, CSS and JS. Press <kbd>Ctrl</kbd> <kbd>K</kbd></span>
   </footer>
 
-  <!-- Command palette -->
   <div class="palette" id="palette" hidden>
     <div class="palette-box" role="dialog" aria-modal="true" aria-label="Command palette">
-      <input id="palette-input" type="text" placeholder="Jump to…  (section, project or link)" autocomplete="off" spellcheck="false">
+      <input id="palette-input" type="text" placeholder="Jump to a section, project or link" autocomplete="off" spellcheck="false" aria-label="Search commands">
       <ul id="palette-list"></ul>
     </div>
   </div>
