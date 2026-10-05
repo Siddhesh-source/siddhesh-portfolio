@@ -1,7 +1,7 @@
 import { h } from '../../../src/lib/dom.js';
 import { projects, profile } from '../data/files.js';
 import { about } from '../data/about.js';
-import { skills, AREAS, WORK } from '../data/skills.js';
+import { skills, AREAS, WORK, findSkills } from '../data/skills.js';
 import { archive, KINDS } from '../data/archive.js';
 import { fundamentals, now } from '../data/learning.js';
 
@@ -48,9 +48,9 @@ export function skillsView(host, app) {
 
   function draw() {
     areaBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.textContent === area)));
-    const q = query.toLowerCase();
+    const matches = new Set(findSkills(query));
     groups.replaceChildren(...AREAS.filter((a) => area === 'All' || a === area).map((a) => {
-      const list = skills.filter((s) => s.area === a && (!q || s.name.toLowerCase().includes(q)));
+      const list = skills.filter((s) => s.area === a && matches.has(s));
       if (!list.length) return null;
       return h('div', { class: 'box', style: { marginBottom: '8px' } }, h('h3', {}, `${a}  ${list.length}`),
         h('div', { class: 'chips' }, list.map((s) => h('li', { style: { listStyle: 'none' } },

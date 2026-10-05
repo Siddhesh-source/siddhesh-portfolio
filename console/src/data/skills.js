@@ -7,6 +7,14 @@ export const WORK = {
   dsa: { name: 'DSA practice and lab work' },
 };
 
+/** Query matches an exact name, else any word that starts with it ("go" finds Go, not Django or MongoDB). */
+export function findSkills(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return skills;
+  const exact = skills.filter((s) => s.name.toLowerCase() === q);
+  return exact.length ? exact : skills.filter((s) => s.name.toLowerCase().split(/[\s/+()-]+/).some((w) => w.startsWith(q)));
+}
+
 export const AREAS = ['Languages', 'Web and backend', 'Data and infra', 'AI and ML', 'Systems and security', 'Fundamentals', 'Automation'];
 
 /** @type {{name:string, area:string, used:string[]}[]} */

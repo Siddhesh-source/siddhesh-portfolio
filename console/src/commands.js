@@ -1,7 +1,7 @@
 // One command registry used by the terminal and the command palette.
 import { files, byName, profile, projects } from './data/files.js';
 import { widgets } from './widgets/index.js';
-import { skills, AREAS } from './data/skills.js';
+import { skills, AREAS, findSkills } from './data/skills.js';
 import { evidenceName } from './components/profile-views.js';
 import { archive, KINDS } from './data/archive.js';
 import { fundamentals, now } from './data/learning.js';
@@ -47,8 +47,8 @@ export function createCommands(app) {
       name: 'skills', args: '[skill]', desc: 'list skills, or the projects that use one',
       run: (a, out) => {
         if (!a.length) return AREAS.forEach((ar) => out(`${ar.padEnd(21)} ${skills.filter((x) => x.area === ar).map((x) => x.name).join(', ')}`));
-        const q = a.join(' ').toLowerCase();
-        const hit = skills.filter((x) => x.name.toLowerCase().includes(q));
+        const q = a.join(' ');
+        const hit = findSkills(q);
         if (!hit.length) return out(`no skill matches "${q}"`, 'err');
         hit.forEach((x) => out(`${x.name.padEnd(26)} ${x.used.length ? x.used.map(evidenceName).join(', ') : 'self-reported (no public repo yet)'}`, x.used.length ? '' : 'muted'));
       },
