@@ -1,0 +1,30 @@
+/* Tokens. Source of truth: ../DESIGN.md. Contrast is checked by scripts/check.mjs. */
+@font-face { font-family: "Cabinet Grotesk"; font-weight: 800; font-display: swap; src: url(../../../assets/fonts/cabinet-grotesk-800.woff2) format("woff2"); }
+@font-face { font-family: "General Sans"; font-weight: 500; font-display: swap; src: url(../../../assets/fonts/general-sans-500.woff2) format("woff2"); }
+@font-face { font-family: "General Sans"; font-weight: 600; font-display: swap; src: url(../../../assets/fonts/general-sans-600.woff2) format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; font-display: swap; src: url(../../../assets/fonts/jetbrains-mono-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 500; font-display: swap; src: url(../../../assets/fonts/jetbrains-mono-latin-500-normal.woff2) format("woff2"); }
+
+:root {
+  --display: "Cabinet Grotesk", system-ui, sans-serif;
+  --sans: "General Sans", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --r-sm: 4px; --r-md: 6px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --bar: 32px; --tab: 34px; --status: 24px;
+  --row: 28px; --pad: 12px; --fs: 0.8125rem;
+}
+[data-density="comfortable"] { --row: 34px; --pad: 16px; --fs: 0.875rem; }
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #0e1319; --surface: #141b22; --line: #243038;
+  --text: #dce4ea; --muted: #8795a1; --accent: #7fb7ff; --on-accent: #0e1319;
+  --ok: #7bd88f; --warn: #f2c265; --error: #ff7a7a;
+}
+[data-theme="light"] {
+  color-scheme: light;
+  --ground: #f4f6f8; --surface: #ffffff; --line: #d5dce3;
+  --text: #121820; --muted: #55616d; --accent: #1f5fbf; --on-accent: #ffffff;
+  --ok: #1a7f37; --warn: #8a5a00; --error: #c4281c;
+}
