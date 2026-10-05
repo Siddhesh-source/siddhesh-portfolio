@@ -8,8 +8,8 @@ export const about = {
   location: 'Pune, India',
   openTo: 'Open to SDE roles, and SDE-leaning AI, ML and infra roles.',
   summary: [
-    'I am a software engineer who builds products end to end: schema, API, interface, deployment. I go deep on the parts that decide quality, including AI and ML systems, infrastructure and the layers underneath them.',
-    'Underneath all of it are the fundamentals I keep strengthening: DBMS, computer networks, operating systems, and data structures and algorithms. Professionally I have worked on a Spring Boot and Next.js product (Rink9, InnovateMore) and on ITR filing automation (TaxBharo).',
+    'I build products end to end: schema, API, interface, deployment. I go deep where quality is decided: AI and ML systems, infrastructure, and the layers beneath them.',
+    'I keep strengthening the fundamentals: DBMS, networks, operating systems, DSA. Work so far: a Spring Boot and Next.js product at InnovateMore (Rink9) and ITR filing automation at TaxBharo.',
   ],
   focus: [
     ['Software', 'full stack: web, mobile, backends, APIs'],

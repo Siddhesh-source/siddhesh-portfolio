@@ -27,10 +27,10 @@ export function aboutView(host, app) {
       h('div', { class: 'box' }, h('h3', {}, 'Range, depth, fundamentals'), kv(about.focus)),
       h('div', { class: 'box' }, h('h3', {}, 'Overview'),
         kv([['projects', `${total} (${projects.length} featured, ${archive.length} more)`], ['languages', String(langs)], ['skills', String(skills.length)], ['experience', `${profile.experience.length} roles`]]),
-        h('p', { class: 'note' }, 'Counts come straight from the data files behind this page.'))),
+
     h('div', { class: 'grid c3' },
-      h('div', { class: 'box' }, h('h3', {}, 'Skills'), h('p', {}, 'Every skill links to the projects that show it.'), cmd('open skills.yaml')),
-      h('div', { class: 'box' }, h('h3', {}, 'Fundamentals'), h('p', {}, 'DBMS, networks, OS and DSA, tied to real projects.'), cmd('open fundamentals.md')),
+      h('div', { class: 'box' }, h('h3', {}, 'Skills'), h('p', {}, 'Each skill with the projects that prove it.'), cmd('open skills.yaml')),
+      h('div', { class: 'box' }, h('h3', {}, 'Fundamentals'), h('p', {}, 'DBMS, networks, OS, DSA, and where each shows up.'), cmd('open fundamentals.md')),
       h('div', { class: 'box' }, h('h3', {}, 'More work'), h('p', {}, `${archive.length} other projects from GitHub.`), cmd('open more.md'))),
     about.education.length ? h('div', { class: 'box', style: { marginTop: '12px' } }, h('h3', {}, 'Education'), ...about.education.map(([school, years]) => h('p', { style: { marginTop: 0 } }, `${school}, ${years}`))) : null);
 }
@@ -59,12 +59,12 @@ export function skillsView(host, app) {
             s.name, usedBy(s).length ? '' : ' *')))));
     }));
     evidence.replaceChildren(...(() => {
-      if (!sel) return [h('h3', {}, 'Evidence'), h('p', { class: 'note', style: { marginTop: 0 } }, 'Pick a skill to see the projects that use it, or pick a project below to light up its skills. * means self-reported: no public repository shows it yet.')];
+      if (!sel) return [h('h3', {}, 'Evidence'), h('p', { class: 'note', style: { marginTop: 0 } }, 'Pick a skill for its projects, or a project for its skills. * = self-reported, no public repo shows it yet.')];
       if (sel.type === 'skill') {
         const s = skills.find((x) => x.name === sel.id);
         return [h('h3', {}, s.name), s.used.length
           ? h('div', { class: 'kv', style: { gridTemplateColumns: '1fr' } }, s.used.map((id) => projectButton(id)))
-          : h('p', { class: 'note', style: { marginTop: 0 } }, 'Self-reported. Used in work I cannot publish or not yet in a public repository.')];
+          : h('p', { class: 'note', style: { marginTop: 0 } }, 'Self-reported: no public repo shows it yet.')];
       }
       const used = skills.filter((s) => s.used.includes(sel.id));
       return [h('h3', {}, `${evidenceName(sel.id)}  ${used.length} skills`), h('div', { class: 'chips' }, used.map((s) => h('li', {}, s.name)))];
@@ -101,7 +101,7 @@ export function moreView(host) {
   }
   put(host, ...head('more.md', `${archive.length} more projects on GitHub, beyond the six featured`),
     h('div', { class: 'ctl' }, ...kinds), h('div', { class: 'ctl' }, h('span', { class: 'muted' }, 'sort'), ...sorts), list,
-    h('p', { class: 'note' }, 'Public repositories only, each checked against its README. Private work is not listed.'));
+    h('p', { class: 'note' }, 'Public repositories only, each checked against its README.'));
   draw();
 }
 
@@ -117,7 +117,7 @@ export function fundamentalsView(host, app) {
       f.profiles.length ? h('div', { class: 'ctl' }, h('span', { class: 'muted' }, 'profiles'), ...f.profiles.map((l) => link(l.href, l.label + ' ↗'))) : null);
   });
   put(host, ...head('fundamentals.md', 'Core subjects I keep strengthening, shown where they appear in real work'),
-    h('p', { style: { marginTop: '8px' } }, 'Range comes from building end to end. Depth comes from the fundamentals underneath: how data is stored, how machines talk, what the operating system does, and how to choose an efficient algorithm.'),
+    h('p', { style: { marginTop: '8px' } }, 'How data is stored, how machines talk, what the OS does, which algorithm to pick.'),
     h('div', { class: 'grid', style: { gridTemplateColumns: '1fr' } }, ...cards));
 }
 

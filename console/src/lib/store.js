@@ -2,7 +2,7 @@
 const KEY = 'console.v1';
 
 const defaults = () => ({
-  tabs: ['readme', 'whispr'], active: 'whispr',
+  tabs: ['readme'], active: 'readme',
   theme: matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark',
   density: 'compact',
   wExp: 220, wIns: 280, hTerm: 220,
