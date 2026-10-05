@@ -26,7 +26,20 @@ ES modules need HTTP, so serve from the repo root (the console imports `../src/d
 | Alt E | focus the explorer; j / k or arrows move, Enter opens |
 | drag a separator | resize panes (arrow keys work too) |
 
-Terminal: `help`, `ls`, `open <file>`, `cat <file>`, `run flash --n 800`, `run nexus`, `run ccml`, `run whispr "hi"`, `run quat phone, book`, `run trade 0.6 0.7 0.4`, `theme light`, `density comfortable`, `toggle terminal`. Tab completes, Up/Down is history.
+## Files
+
+| File | What it is |
+|---|---|
+| `README.md` | welcome and start-here commands |
+| `about.md` | profile overview with counts computed from the data |
+| `skills.yaml` | 46 skills in 6 areas; click a skill for its evidence, or a project to light up its skills. `*` = self-reported |
+| `experience.yaml` | roles |
+| `contact.md` | links (email and resume appear automatically once set in `data/about.js`) |
+| `projects/` | the six featured projects with live widgets, plus `more.md` (13 other GitHub projects, filter and sort) |
+| `learning/dsa.md` | DSA repo stats and an 11-topic roadmap with honest status per topic |
+| `learning/now.md` | what I am building and learning |
+
+Terminal: `help`, `ls`, `open <file>`, `cat <file>`, `run flash --n 800`, `run nexus`, `run ccml`, `run whispr "hi"`, `run quat phone, book`, `run trade 0.6 0.7 0.4`, `theme light`, `density comfortable`, `skills go`, `dsa`, `now`, `more ML`, `about`, `toggle terminal`. Tab completes, Up/Down is history.
 
 Tabs, theme, density and pane sizes persist in localStorage. Deep links work: `/console/#/flash`.
 
@@ -39,8 +52,8 @@ console/
   src/
     main.js                 composes the shell, keyboard, deep links
     commands.js             one registry for terminal and palette
-    data/files.js           virtual file tree, built from ../../src/data
-    components/             explorer, tabs, editor, views, terminal, palette, statusbar, resize, boot
+    data/                   files.js (tree), about.js, skills.js, archive.js, learning.js; projects come from ../../src/data
+    components/             explorer, tabs, editor, views, profile-views, terminal, palette, statusbar, resize, boot
     widgets/                one module per project: mount(host) for the pane, run(args, out) for the terminal
     lib/                    store (persisted state), fuzzy
     styles/                 tokens (both themes), layout, components
@@ -57,3 +70,11 @@ Add it to `../src/data/projects.js`, then create `console/src/widgets/<id>.js` e
 
 - The Whispr "ciphertext" is derived opaque bytes for illustration, not real libsignal output. Trading weights, Quatarly penalties and the flash-sale race are simulations. Each is labelled in the UI.
 - The Whispr repository link points to a private repo until it is made public.
+
+## Edit the content
+
+- Profile text, education, resume link, email: `src/data/about.js` (empty fields stay hidden).
+- Skills and their evidence: `src/data/skills.js`. A skill with no evidence is shown as self-reported.
+- Other GitHub projects: `src/data/archive.js`. Check each against its README first.
+- DSA and learning: `src/data/learning.js`.
+- `npm run check:console` fails on unknown evidence ids, duplicate entries, non-GitHub links and DSA counts that do not add up.

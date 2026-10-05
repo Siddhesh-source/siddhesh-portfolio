@@ -103,6 +103,8 @@ Flat. Depth is surface versus ground plus a 1px line. Menus and the palette sit 
 - **Explorer:** tree of folders and files with a kind dot, arrow-key and j/k navigation, Enter opens.
 - **Tabs:** close button, middle-click and Alt W close, Alt 1 to 9 jump.
 - **Editor pane:** heading, numeral line in mono, widget, facts. One idea per pane.
+- **Skills matrix:** chips grouped by area. Selecting a skill lists the projects that evidence it; selecting a project lights up its skills. Self-reported skills carry `*`.
+- **Roadmap rows:** topic, status in words (solved, lab, lectures, planned), one-line note. Status is never decoration.
 - **Inspector:** draggable architecture diagram, stack chips, source link.
 - **Terminal:** real command line with history, completion and clickable suggestions.
 - **Palette:** Ctrl P quick-open (fuzzy), Ctrl K commands.
