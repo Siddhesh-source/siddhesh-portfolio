@@ -25,7 +25,7 @@ export const files = [
   { id: 'contact', name: 'contact.md', dir: '', path: 'contact.md', title: 'Contact', view: 'contact' },
   ...projects.map((p) => ({ id: p.id, name: NAMES[p.id] || `${p.id}.md`, dir: 'projects', path: `projects/${NAMES[p.id] || p.id + '.md'}`, title: p.name, project: p })),
   { id: 'more', name: 'more.md', dir: 'projects', path: 'projects/more.md', title: 'More projects', view: 'more' },
-  { id: 'dsa', name: 'dsa.md', dir: 'learning', path: 'learning/dsa.md', title: 'DSA', view: 'dsa' },
+  { id: 'core', name: 'fundamentals.md', dir: 'learning', path: 'learning/fundamentals.md', title: 'Fundamentals', view: 'core' },
   { id: 'now', name: 'now.md', dir: 'learning', path: 'learning/now.md', title: 'Now', view: 'now' },
 ];
 

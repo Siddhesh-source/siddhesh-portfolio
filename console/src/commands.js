@@ -4,7 +4,7 @@ import { widgets } from './widgets/index.js';
 import { skills, AREAS } from './data/skills.js';
 import { evidenceName } from './components/profile-views.js';
 import { archive, KINDS } from './data/archive.js';
-import { dsaRepo, roadmap, STATUS_LABEL, now } from './data/learning.js';
+import { fundamentals, now } from './data/learning.js';
 import { about } from './data/about.js';
 
 const PANELS = { explorer: 'exp', inspector: 'ins', terminal: 'term' };
@@ -30,7 +30,7 @@ export function createCommands(app) {
         else if (f.id === 'about') { out(about.headline, 'acc'); about.summary.forEach((t) => out(t)); }
         else if (f.id === 'skills') AREAS.forEach((a) => out(`${a.padEnd(21)} ${skills.filter((x) => x.area === a).map((x) => x.name).join(', ')}`));
         else if (f.id === 'more') archive.forEach((a) => out(`${a.name.padEnd(26)} ${a.kind}`));
-        else if (f.id === 'dsa') roadmap.forEach((r) => out(`${r.topic.padEnd(28)} ${STATUS_LABEL[r.status]}`));
+        else if (f.id === 'core') fundamentals.forEach((x) => out(`${x.name.padEnd(32)} ${x.line}`));
         else if (f.id === 'now') { now.building.forEach((i) => out(`building  ${i.what}: ${i.detail}`)); now.learning.forEach((i) => out(`learning  ${i.what}: ${i.detail}`, 'muted')); }
         else { out(profile.title, 'acc'); out(profile.lede); }
       },
@@ -53,7 +53,7 @@ export function createCommands(app) {
         hit.forEach((x) => out(`${x.name.padEnd(26)} ${x.used.length ? x.used.map(evidenceName).join(', ') : 'self-reported (no public repo yet)'}`, x.used.length ? '' : 'muted'));
       },
     },
-    { name: 'dsa', desc: 'DSA repo stats and roadmap', run: (_a, out) => { out(`${dsaRepo.solutions} ${dsaRepo.language} solutions (${dsaRepo.groups.map(([k, n]) => `${k} ${n}`).join(', ')})`, 'acc'); roadmap.forEach((r) => out(`${r.topic.padEnd(28)} ${STATUS_LABEL[r.status].padEnd(15)} ${r.note}`, r.status === 'planned' ? 'muted' : '')); } },
+    { name: 'fundamentals', desc: 'core subjects and where they show up', run: (_a, out) => fundamentals.forEach((x) => { out(`${x.name}  ${x.line}`, 'acc'); x.shows.forEach(([id, why]) => out(`  ${evidenceName(id).padEnd(28)} ${why}`, 'muted')); }) },
     { name: 'now', desc: 'what I am building and learning', run: (_a, out) => { now.building.forEach((i) => out(`building  ${i.what}: ${i.detail}`)); now.learning.forEach((i) => out(`learning  ${i.what}: ${i.detail}`, 'muted')); } },
     { name: 'more', args: '[kind]', desc: 'list other GitHub projects', run: (a, out) => { const k = a.join(' ').toLowerCase(); const rows = archive.filter((x) => !k || x.kind.toLowerCase() === k); if (!rows.length) return out(`kinds: ${KINDS.join(', ')}`, 'muted'); rows.forEach((x) => out(`${x.name.padEnd(26)} ${x.kind.padEnd(10)} ${x.href}`)); } },
     { name: 'about', desc: 'profile overview', run: (_a, out) => { out(about.headline, 'acc'); about.summary.forEach((t) => out(t)); } },

@@ -2,9 +2,9 @@ import { h } from '../../../src/lib/dom.js';
 import { byId } from '../data/files.js';
 import * as store from '../lib/store.js';
 import { readmeView, experienceView, projectView, inspectorView } from './views.js';
-import { aboutView, skillsView, moreView, dsaView, nowView, contactView } from './profile-views.js';
+import { aboutView, skillsView, moreView, fundamentalsView, nowView, contactView } from './profile-views.js';
 
-const VIEWS = { readme: readmeView, about: aboutView, skills: skillsView, exp: experienceView, contact: contactView, more: moreView, dsa: dsaView, now: nowView };
+const VIEWS = { readme: readmeView, about: aboutView, skills: skillsView, exp: experienceView, contact: contactView, more: moreView, core: fundamentalsView, now: nowView };
 
 /** Renders the active file into the editor pane and the inspector, cleaning up the previous widgets. */
 export function mountEditor(pane, inspector, app) {

@@ -4,10 +4,10 @@
 export const WORK = {
   rink9: { name: 'Rink9 (InnovateMore)' },
   taxbharo: { name: 'TaxBharo' },
-  dsa: { name: 'DSA repo' },
+  dsa: { name: 'DSA practice and lab work' },
 };
 
-export const AREAS = ['Languages', 'Web and backend', 'Data and infra', 'AI and ML', 'Systems and security', 'Automation'];
+export const AREAS = ['Languages', 'Web and backend', 'Data and infra', 'AI and ML', 'Systems and security', 'Fundamentals', 'Automation'];
 
 /** @type {{name:string, area:string, used:string[]}[]} */
 export const skills = [
@@ -55,11 +55,13 @@ export const skills = [
   { name: 'LLM agents', area: 'AI and ML', used: ['agentos', 'newsnexus'] },
   // Systems and security
   { name: 'x86-64 + NASM', area: 'Systems and security', used: ['nexus'] },
-  { name: 'OS kernels', area: 'Systems and security', used: ['nexus'] },
   { name: 'E2EE (libsignal)', area: 'Systems and security', used: ['whispr'] },
   { name: 'Atomic operations (Lua)', area: 'Systems and security', used: ['flash'] },
   { name: 'Network attack detection', area: 'Systems and security', used: ['tcp'] },
-  { name: 'Data structures and algorithms', area: 'Systems and security', used: ['dsa'] },
+  { name: 'DBMS', area: 'Fundamentals', used: ['flash', 'whispr', 'quat', 'examsys'] },
+  { name: 'Computer networks', area: 'Fundamentals', used: ['tcp', 'whispr', 'trade', 'quat'] },
+  { name: 'Operating systems', area: 'Fundamentals', used: ['nexus'] },
+  { name: 'Data structures and algorithms', area: 'Fundamentals', used: ['dsa'] },
   // Automation
   { name: 'Playwright', area: 'Automation', used: ['taxbharo'] },
   { name: 'Git', area: 'Automation', used: [] },

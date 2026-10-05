@@ -3,7 +3,7 @@ import { projects, profile } from '../data/files.js';
 import { about } from '../data/about.js';
 import { skills, AREAS, WORK } from '../data/skills.js';
 import { archive, KINDS } from '../data/archive.js';
-import { dsaRepo, roadmap, STATUS_LABEL, now } from '../data/learning.js';
+import { fundamentals, now } from '../data/learning.js';
 
 const chip = (text, props = {}) => h('button', { class: 'btn', type: 'button', ...props }, text);
 const link = (href, text) => h('a', { href, target: '_blank', rel: 'noopener' }, text);
@@ -21,16 +21,16 @@ export function aboutView(host, app) {
   const total = projects.length + archive.length;
   const cmd = (c) => h('button', { class: 'sug', type: 'button', onclick: () => app.exec(c) }, c);
   put(host, 
-    ...head(about.headline, `${about.location}  ·  open to distributed systems, infra and AI work`),
+    ...head(about.headline, `${about.location}  ·  ${about.tagline}`),
     ...about.summary.map((t) => h('p', { style: { marginTop: '8px' } }, t)),
     h('div', { class: 'grid' },
-      h('div', { class: 'box' }, h('h3', {}, 'How I work'), kv(about.focus)),
+      h('div', { class: 'box' }, h('h3', {}, 'Range, depth, fundamentals'), kv(about.focus)),
       h('div', { class: 'box' }, h('h3', {}, 'Overview'),
         kv([['projects', `${total} (${projects.length} featured, ${archive.length} more)`], ['languages', String(langs)], ['skills', String(skills.length)], ['experience', `${profile.experience.length} roles`]]),
         h('p', { class: 'note' }, 'Counts come straight from the data files behind this page.'))),
     h('div', { class: 'grid c3' },
       h('div', { class: 'box' }, h('h3', {}, 'Skills'), h('p', {}, 'Every skill links to the projects that show it.'), cmd('open skills.yaml')),
-      h('div', { class: 'box' }, h('h3', {}, 'Learning'), h('p', {}, 'DSA tracker and what I am working on now.'), cmd('open dsa.md')),
+      h('div', { class: 'box' }, h('h3', {}, 'Fundamentals'), h('p', {}, 'DBMS, networks, OS and DSA, tied to real projects.'), cmd('open fundamentals.md')),
       h('div', { class: 'box' }, h('h3', {}, 'More work'), h('p', {}, `${archive.length} other projects from GitHub.`), cmd('open more.md'))),
     about.education.length ? h('div', { class: 'box', style: { marginTop: '12px' } }, h('h3', {}, 'Education'), kv(about.education)) : null);
 }
@@ -105,31 +105,20 @@ export function moreView(host) {
   draw();
 }
 
-/* ---------------- dsa.md ---------------- */
-export function dsaView(host) {
-  let status = 'all';
-  const done = roadmap.filter((r) => r.status !== 'planned').length;
-  const filters = ['all', ...Object.keys(STATUS_LABEL)].map((s) => chip(s === 'all' ? 'all' : STATUS_LABEL[s], { 'aria-pressed': String(s === status), 'data-s': s, onclick: () => { status = s; draw(); } }));
-  const rows = h('div');
-  const max = Math.max(...dsaRepo.groups.map(([, n]) => n));
-  function draw() {
-    filters.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.s === status)));
-    rows.replaceChildren(...roadmap.filter((r) => status === 'all' || r.status === status).map((r) =>
-      h('div', { class: 'w-row2' }, h('span', {}, r.topic), h('span', { class: r.status === 'solved' ? 'ok' : r.status === 'planned' ? 'muted' : 'acc' }, STATUS_LABEL[r.status]), h('span', { class: 'muted' }, r.note))));
-  }
-  put(host, ...head('dsa.md', 'Data structures and algorithms: a tracker, solved code, and lab coursework'),
-    h('div', { class: 'grid' },
-      h('div', { class: 'box' }, h('h3', {}, 'DSA repo'),
-        h('div', { class: 'big-num' }, String(dsaRepo.solutions)),
-        h('p', { class: 'note', style: { marginTop: 0 } }, `${dsaRepo.language} solutions, started July 2025. Repository is ${dsaRepo.visibility}; `, link(dsaRepo.href, 'link ↗'), '.'),
-        ...dsaRepo.groups.map(([k, n]) => h('div', { class: 'bar' }, h('span', {}, k), h('div', { class: 'rng' }, h('i', { style: { '--l': '0%', '--w': (n / max) * 100 + '%' } })), h('span', {}, String(n)))),
-        h('ul', { class: 'chips' }, dsaRepo.patterns.map((p) => h('li', {}, p)))),
-      h('div', { class: 'box' }, h('h3', {}, 'Roadmap'),
-        h('div', { class: 'rl' }, h('span', {}, 'topics started or covered'), h('span', { class: 'acc' }, `${done} of ${roadmap.length}`)),
-        h('div', { class: 'meter' }, h('i', { style: { '--w': (done / roadmap.length) * 100 + '%' } })),
-        h('div', { class: 'ctl' }, ...filters), rows,
-        h('p', { class: 'note' }, 'Eleven topics in the tracker plus a weekly rotation plan. Lab coursework covers lists, stacks, queues, BST, BFS/DFS, Dijkstra, hashing and sorting in C++ and Java.'))));
-  draw();
+/* ---------------- fundamentals.md ---------------- */
+export function fundamentalsView(host, app) {
+  const cards = fundamentals.map((f) => {
+    const proj = ([id, why]) => {
+      const featured = projects.find((p) => p.id === id);
+      return [featured ? h('button', { class: 'sug', type: 'button', onclick: () => app.open(id) }, evidenceName(id)) : h('span', {}, evidenceName(id)), h('span', { class: 'muted' }, why)];
+    };
+    return h('div', { class: 'box' }, h('h3', {}, f.name), h('p', { style: { marginTop: 0 } }, f.line),
+      h('div', { class: 'kv', style: { gridTemplateColumns: '9rem 1fr', marginTop: '8px' } }, f.shows.flatMap(proj)),
+      f.profiles.length ? h('div', { class: 'ctl' }, h('span', { class: 'muted' }, 'profiles'), ...f.profiles.map((l) => link(l.href, l.label + ' ↗'))) : null);
+  });
+  put(host, ...head('fundamentals.md', 'Core subjects I keep strengthening, shown where they appear in real work'),
+    h('p', { style: { marginTop: '8px' } }, 'Range comes from building end to end. Depth comes from the fundamentals underneath: how data is stored, how machines talk, what the operating system does, and how to choose an efficient algorithm.'),
+    h('div', { class: 'grid', style: { gridTemplateColumns: '1fr' } }, ...cards));
 }
 
 /* ---------------- now.md ---------------- */
@@ -144,6 +133,6 @@ export function contactView(host) {
   const rows = [...profile.links.map((l) => [l.label, link(l.href, l.href.replace('https://', ''))])];
   if (about.email) rows.push(['email', link(`mailto:${about.email}`, about.email)]);
   if (about.resumeHref) rows.push(['resume', link(about.resumeHref, 'download')]);
-  put(host, ...head('contact.md', 'Open to hard problems in distributed systems, infra and AI products'),
+  put(host, ...head('contact.md', about.openTo),
     h('div', { class: 'box' }, h('h3', {}, 'Find me'), kv(rows)));
 }

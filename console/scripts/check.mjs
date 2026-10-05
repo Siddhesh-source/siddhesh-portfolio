@@ -46,7 +46,7 @@ if (!failures) ok(`${files.length} files, ${names.length} commands, ${Object.key
 /* ---- profile data ---- */
 const { skills } = await import(pathToFileURL(resolve(root, 'src/data/skills.js')).href);
 const { archive } = await import(pathToFileURL(resolve(root, 'src/data/archive.js')).href);
-const { dsaRepo, roadmap, STATUS_LABEL } = await import(pathToFileURL(resolve(root, 'src/data/learning.js')).href);
+const { fundamentals } = await import(pathToFileURL(resolve(root, 'src/data/learning.js')).href);
 const { projects } = await import(pathToFileURL(resolve(root, '../src/data/projects.js')).href);
 const evidence = new Set([...projects.map((p) => p.id), ...archive.map((a) => a.id), 'rink9', 'taxbharo', 'dsa']);
 const seen = new Set();
@@ -60,9 +60,12 @@ for (const sk of skills) {
   if (skillNames.has(sk.name)) fail(`duplicate skill ${sk.name}`); skillNames.add(sk.name);
   for (const id of sk.used) if (!evidence.has(id)) fail(`skill ${sk.name} cites unknown evidence "${id}"`);
 }
-if (dsaRepo.groups.reduce((a, [, n]) => a + n, 0) !== dsaRepo.solutions) fail('DSA group counts do not sum to solutions');
-for (const r of roadmap) if (!STATUS_LABEL[r.status]) fail(`roadmap ${r.topic}: bad status ${r.status}`);
-if (!failures) ok(`${skills.length} skills, ${archive.length} archive projects, ${roadmap.length} roadmap topics`);
+for (const f of fundamentals) {
+  if (!f.shows.length) fail(`fundamentals ${f.id}: needs at least one piece of evidence`);
+  for (const [id] of f.shows) if (!evidence.has(id)) fail(`fundamentals ${f.id} cites unknown evidence "${id}"`);
+  for (const l of f.profiles) if (!/^https:\/\//.test(l.href)) fail(`fundamentals ${f.id}: profile links must be https`);
+}
+if (!failures) ok(`${skills.length} skills, ${archive.length} archive projects, ${fundamentals.length} core subjects`);
 
 /* ---- simulation invariants (shared logic) ---- */
 const { simulate } = await import(pathToFileURL(resolve(root, '../src/widgets/flash.js')).href);

@@ -16,7 +16,7 @@ export function readmeView(host, app) {
           h('span', {}, 'try'), cmd('run flash --n 800'),
           h('span', {}, 'try'), cmd('open nexusos.log'),
           h('span', {}, 'try'), cmd('skills go'),
-          h('span', {}, 'try'), cmd('dsa'),
+          h('span', {}, 'try'), cmd('fundamentals'),
           h('span', {}, 'try'), cmd('theme light'),
           h('span', {}, 'help'), cmd('help'))),
       h('div', { class: 'box' }, h('h3', {}, 'Keys'),
@@ -51,7 +51,7 @@ export function inspectorView(host, file, app) {
     host.append(h('h3', {}, 'Projects'),
       h('div', { class: 'kv', style: { gridTemplateColumns: '1fr', gap: '4px' } }, projects.map((p) => open(p.id, p.name)), open('more', 'More projects')),
       h('h3', { style: { marginTop: '16px' } }, 'Profile'),
-      h('div', { class: 'kv', style: { gridTemplateColumns: '1fr', gap: '4px' } }, open('about', 'About'), open('skills', 'Skills'), open('exp', 'Experience'), open('dsa', 'DSA'), open('now', 'Now')));
+      h('div', { class: 'kv', style: { gridTemplateColumns: '1fr', gap: '4px' } }, open('about', 'About'), open('skills', 'Skills'), open('exp', 'Experience'), open('core', 'Fundamentals'), open('now', 'Now')));
     return;
   }
   const p = file.project, cmd = (c) => h('button', { class: 'sug', type: 'button', onclick: () => app.exec(c) }, c);

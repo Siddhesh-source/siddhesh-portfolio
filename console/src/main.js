@@ -31,6 +31,12 @@ const topbar = h('header', { class: 'topbar' }, menu, h('b', {}, 'siddhesh.dev')
   h('button', { class: 'btn nw', type: 'button', onclick: () => palette.show('commands') }, 'Commands'));
 root.replaceChildren(topbar, work, termwrap, status);
 
+/* ---- drop persisted tabs for files that no longer exist ---- */
+{
+  const s = store.get(), tabsOk = s.tabs.filter((id) => byId(id));
+  if (tabsOk.length !== s.tabs.length || !byId(s.active)) store.set({ tabs: tabsOk.length ? tabsOk : ['readme'], active: byId(s.active) ? s.active : (tabsOk[0] || 'readme') });
+}
+
 /* ---- view state ---- */
 function applyView() {
   const s = store.get();
