@@ -4,3 +4,5 @@ node_modules/
 *.log
 .gstack/
 package-lock.json
+
+.vercel
