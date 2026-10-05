@@ -73,7 +73,7 @@ Add it to `../src/data/projects.js`, then create `console/src/widgets/<id>.js` e
 
 ## Edit the content
 
-- Profile text, education, resume link, email: `src/data/about.js` (empty fields stay hidden).
+- Profile text and resume link: `src/data/about.js`. Education and email live in `../src/data/profile.js` so both sites stay in step (empty fields stay hidden).
 - Skills and their evidence: `src/data/skills.js`. A skill with no evidence is shown as self-reported.
 - Other GitHub projects: `src/data/archive.js`. Check each against its README first.
 - Core subjects, profile links (`profiles: [{ label, href }]`, https only) and what I am working on now: `src/data/learning.js`.

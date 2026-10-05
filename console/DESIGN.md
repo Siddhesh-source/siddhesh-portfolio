@@ -58,9 +58,9 @@ spacing:
 ## Overview
 
 **Creative North Star:** A working console, not a brochure. Every project is a file you open, run and poke, so the visitor learns how it works by operating it.
-**Product context:** Portfolio of a general-purpose engineer: efficient across domains, end to end, deep where it counts, with strong fundamentals (DBMS, networks, OS, DSA). Audience: engineers and hiring managers who read code for a living.
+**Product context:** Portfolio of a software engineer (SDE first, targeting SDE plus AI, infra and ML roles): end to end, deep in AI, ML and infra, with strong fundamentals (DBMS, networks, OS, DSA). Audience: engineers and hiring managers who read code for a living.
 **Mode per surface:** Operate for the shell (explorer, tabs, terminal, palette). Experience for the welcome tab and project panes.
-**Memorable thing:** A general-purpose engineer who works end to end and goes deep when it counts.
+**Memorable thing:** A software engineer who builds end to end and goes deep in AI, ML and infra.
 **Key characteristics:**
 - Dense and flat. Rows are 28px, borders are 1px, nothing glows.
 - Keyboard first. Every action has a key and a terminal command.
@@ -135,4 +135,5 @@ Flat. Depth is surface versus ground plus a 1px line. Menus and the palette sit 
 | 2026-10-05 | Ice-blue accent replaces neon cyan | Near-black plus neon is a default look; restrained accent is more distinctive |
 | 2026-10-05 | Dark default with light theme | IDE convention; use scene is reading code in dim or bright rooms |
 | 2026-10-05 | Terminal is a real interface | Matches the audience and gives every widget a keyboard path |
+| 2026-10-05 | Message reworded: software engineer, SDE first, with AI, ML and infra depth; education and email added | Owner target roles: SDE plus AI/infra/ML, SDE preferred |
 | 2026-10-05 | Core message is range plus depth, not a single specialty; DSA tracker detail removed, replaced by a fundamentals page | Owner direction: general-purpose engineer, end to end, strengthening DBMS, CN, OS, DSA |

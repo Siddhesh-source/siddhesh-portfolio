@@ -28,7 +28,8 @@ export function readmeView(host, app) {
 export function experienceView(host) {
   host.append(h('h1', {}, 'experience.yaml'), h('p', {}, 'Where I have worked.'),
     h('div', { class: 'grid', style: { gridTemplateColumns: '1fr' } },
-      ...profile.experience.map((e) => h('div', { class: 'box' }, h('h3', {}, e.org), h('p', {}, e.what), h('ul', { class: 'chips' }, e.stack.split(' · ').map((x) => h('li', {}, x)))))));
+      ...profile.experience.map((e) => h('div', { class: 'box' }, h('h3', {}, e.org), h('p', {}, e.what), h('ul', { class: 'chips' }, e.stack.split(' · ').map((x) => h('li', {}, x))))),
+      ...profile.education.map((e) => h('div', { class: 'box' }, h('h3', {}, 'Education'), h('p', {}, `${e.school}, ${e.years}`)))));
 }
 
 export function projectView(host, p) {

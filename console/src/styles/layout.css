@@ -29,6 +29,8 @@ button, input { font: inherit; color: inherit; }
 .inspector { background: var(--surface); overflow: auto; min-width: 0; padding: var(--pad); }
 .termwrap { display: grid; grid-template-rows: 4px var(--h-term, 180px); }
 .termwrap.hidden { display: none; }
+.termhost { min-height: 0; overflow: hidden; }
+.termhost > .term { height: 100%; }
 .status { display: flex; align-items: center; gap: var(--pad); padding: 0 var(--pad); border-top: 1px solid var(--line); background: var(--surface); font-size: 0.6875rem; color: var(--muted); }
 .status { overflow: hidden; white-space: nowrap; }
 .nw { white-space: nowrap; }

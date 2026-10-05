@@ -32,7 +32,7 @@ export function aboutView(host, app) {
       h('div', { class: 'box' }, h('h3', {}, 'Skills'), h('p', {}, 'Every skill links to the projects that show it.'), cmd('open skills.yaml')),
       h('div', { class: 'box' }, h('h3', {}, 'Fundamentals'), h('p', {}, 'DBMS, networks, OS and DSA, tied to real projects.'), cmd('open fundamentals.md')),
       h('div', { class: 'box' }, h('h3', {}, 'More work'), h('p', {}, `${archive.length} other projects from GitHub.`), cmd('open more.md'))),
-    about.education.length ? h('div', { class: 'box', style: { marginTop: '12px' } }, h('h3', {}, 'Education'), kv(about.education)) : null);
+    about.education.length ? h('div', { class: 'box', style: { marginTop: '12px' } }, h('h3', {}, 'Education'), ...about.education.map(([school, years]) => h('p', { style: { marginTop: 0 } }, `${school}, ${years}`))) : null);
 }
 
 /* ---------------- skills.yaml ---------------- */

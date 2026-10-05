@@ -53,9 +53,9 @@ spacing:
 ## Overview
 
 **Creative North Star:** An exhibit of working objects. Each project is a poster in its own colour, with something to touch, so the visitor learns how it works by using it.
-**Product context:** Personal portfolio of a general-purpose engineer who works across domains, end to end, and goes deep when it counts, with strong fundamentals (DBMS, networks, OS, DSA). Audience: engineers and hiring managers skimming for ten seconds, then reading one project closely.
+**Product context:** Personal portfolio of a software engineer (SDE first, targeting SDE plus AI, infra and ML roles) who builds end to end and goes deep in AI, ML and infra, with strong fundamentals (DBMS, networks, OS, DSA). Audience: engineers and hiring managers skimming for ten seconds, then reading one project closely.
 **Mode per surface:** Experience for the project chapters and hero. Read for any long copy. No Persuade surface.
-**Memorable thing:** A general-purpose engineer who works end to end and goes deep when it counts.
+**Memorable thing:** A software engineer who builds end to end and goes deep in AI, ML and infra.
 **Key characteristics:**
 - One flat colour owns the viewport at a time. The colour changes as you scroll.
 - Giant display type, tight tracking, left-aligned.

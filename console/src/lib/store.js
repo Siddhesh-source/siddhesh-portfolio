@@ -5,7 +5,7 @@ const defaults = () => ({
   tabs: ['readme', 'whispr'], active: 'whispr',
   theme: matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark',
   density: 'compact',
-  wExp: 220, wIns: 280, hTerm: 170,
+  wExp: 220, wIns: 280, hTerm: 220,
   exp: true, ins: true, term: !matchMedia('(max-width: 860px)').matches,
   dirs: { projects: true },
 });
