@@ -1,6 +1,4 @@
 node_modules
 .gstack
 .git
-docs
 scripts
-console/scripts

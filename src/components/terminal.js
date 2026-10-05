@@ -1,4 +1,4 @@
-import { h } from '../../../src/lib/dom.js';
+import { h } from '../lib/dom.js';
 import { files } from '../data/files.js';
 import { createCommands, setCommands } from '../commands.js';
 

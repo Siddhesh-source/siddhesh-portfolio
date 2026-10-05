@@ -1,4 +1,4 @@
-// Skills with the projects that evidence them. Evidence ids are featured project ids (../../../src/data),
+// Skills with the projects that evidence them. Evidence ids are featured project ids (./projects.js),
 // archive ids (./archive.js), or WORK ids below. A skill with no evidence is shown as self-reported (marked *).
 
 export const WORK = {

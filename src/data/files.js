@@ -1,6 +1,6 @@
-// The virtual file system shown in the explorer. Project content comes from the shared data in ../../../src/data.
-import { projects } from '../../../src/data/projects.js';
-import { profile } from '../../../src/data/profile.js';
+// The virtual file system shown in the explorer. Project content comes from the data in this folder.
+import { projects } from './projects.js';
+import { profile } from './profile.js';
 
 const NAMES = {
   whispr: 'whispr.md',

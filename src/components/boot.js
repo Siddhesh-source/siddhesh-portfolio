@@ -1,4 +1,4 @@
-import { h } from '../../../src/lib/dom.js';
+import { h } from '../lib/dom.js';
 import { once } from '../lib/store.js';
 
 // Excerpt of the real NexusOS boot log, then the mount line for this console.

@@ -1,52 +1,73 @@
-# portfolio
+# Systems Console
 
-Personal developer portfolio: poster-scale colour chapters, one per project, each with a live widget and a draggable architecture diagram. Static site, native ES modules, **no build step and no dependencies**.
-
-## Two versions
-
-- `/` Exhibit: colour chapters, one per project, each with a live demo.
-- `/console/` Systems Console: an IDE-style portfolio with a terminal, palette and skills, fundamentals and more-projects pages. See `console/README.md`.
+Personal portfolio built as a working console: a file explorer, tabs, a terminal and a command palette, with a live simulation behind every project file. Static site, native ES modules, no build step, no dependencies.
 
 ## Run
 
 ```sh
 npm start          # python -m http.server 8000, then open http://localhost:8000
-npm run check      # contrast (WCAG AA) + project data + simulation invariants (Node 20+)
+npm run check      # theme contrast, data and registry integrity, simulation invariants (Node 20+)
 ```
 
-ES modules need HTTP, so opening `index.html` from disk will not work. Any static host works (GitHub Pages, Netlify, Vercel): publish the repo root.
+ES modules need HTTP, so opening `index.html` from disk will not work. Any static host works; `vercel.json` is included for Vercel.
+
+## Use it
+
+| Key | Action |
+|---|---|
+| Ctrl P | quick open (fuzzy) |
+| Ctrl K or Ctrl Shift P | command palette |
+| Ctrl B | toggle explorer |
+| Ctrl ` or Ctrl J | toggle terminal |
+| Alt W | close tab |
+| Alt 1..9 | jump to tab |
+| Alt E | focus the explorer; j / k or arrows move, Enter opens |
+| drag a separator | resize panes (arrow keys work too) |
+
+Terminal: `help`, `ls`, `open <file>`, `cat <file>`, `run flash --n 800`, `run nexus`, `run ccml`, `run whispr "hi"`, `run quat phone, book`, `run trade 0.6 0.7 0.4`, `skills go`, `fundamentals`, `now`, `more ML`, `about`, `theme light`, `density comfortable`, `toggle terminal`. Tab completes, Up/Down is history.
+
+Tabs, theme, density and pane sizes persist in localStorage. Deep links work: `/#/flash`.
+
+## Files
+
+| File | What it is |
+|---|---|
+| `README.md` | welcome and start-here commands |
+| `about.md` | profile overview, with counts computed from the data |
+| `skills.yaml` | skills in 7 areas; click a skill for its evidence, or a project to light up its skills. `*` = self-reported |
+| `experience.yaml` | roles and education |
+| `contact.md` | links and email |
+| `projects/` | six featured projects with live widgets, plus `more.md` (13 other GitHub projects) |
+| `learning/fundamentals.md` | DBMS, networks, OS and DSA, tied to the projects where each shows up |
+| `learning/now.md` | what I am building and learning |
 
 ## Structure
 
 ```
-index.html              shell: fonts, stylesheets, <main id="app">, module entry
+index.html                  shell
+DESIGN.md                   design intent, tokens, rules (source of truth for visuals)
 src/
-  main.js               composes chapters, rail and command palette
-  data/                 content only
-    projects.js         one entry per project chapter (copy, numeral, stack, diagram)
-    profile.js          name, links, experience, stack
-  components/           UI building blocks (no content)
-    chapter.js hero.js closing.js diagram.js rail.js palette.js
-  widgets/              one live demo per project, lazy-loaded
-    index.js            registry: project id -> module
-  styles/
-    tokens.css          colours, type, spacing, chapter themes (from DESIGN.md)
-    base.css layout.css components.css
-  lib/dom.js            tiny h()/s() element helpers
-assets/
-  fonts/                self-hosted woff2 (Cabinet Grotesk, General Sans, JetBrains Mono)
-  favicon.svg
-scripts/check.mjs       zero-dependency checks
-docs/ARCHITECTURE.md    how to extend it
-DESIGN.md               design intent, tokens, rules (source of truth for visuals)
+  main.js                   composes the shell, keyboard, deep links
+  commands.js               one registry for the terminal and the palette
+  data/                     projects.js, profile.js, about.js, skills.js, archive.js, learning.js, files.js
+  components/               explorer, tabs, editor, views, profile-views, diagram, terminal, palette, statusbar, resize, boot
+  widgets/                  one module per project: mount(host) for the pane, run(args, out) for the terminal
+  lib/                      dom, store (persisted state), fuzzy, sim (flash-sale and trading logic)
+  styles/                   tokens (both themes), layout, components
+assets/                     fonts (woff2) and favicon
+scripts/check.mjs           zero-dependency checks
 ```
 
-## Add a project
+## Edit the content
 
-See `docs/ARCHITECTURE.md`. In short: data entry, widget module, registry line, theme in `tokens.css`, then `npm run check`.
+- Profile text and resume link: `src/data/about.js`. Email and education: `src/data/profile.js` (empty fields stay hidden).
+- Featured projects: `src/data/projects.js`, plus a widget in `src/widgets/` registered in `widgets/index.js`, and a file name in `src/data/files.js`.
+- Skills and their evidence: `src/data/skills.js`. A skill with no evidence is shown as self-reported.
+- Other GitHub projects: `src/data/archive.js`. Check each against its README first.
+- Core subjects, profile links (`profiles: [{ label, href }]`, https only) and current work: `src/data/learning.js`.
+- `npm run check` fails on unknown evidence ids, duplicate entries, non-GitHub links, subjects without evidence, non-https profile links, and contrast below 4.5:1 in either theme.
 
-## Principles
+## Notes
 
-- Content lives in `src/data`, behaviour in `src/components` and `src/widgets`, look in `src/styles`.
-- Every claim traces to a repository. Simulations and illustrative values are labelled on the page.
-- Works without a framework, a bundler or a lockfile.
+- The Whispr "ciphertext" is derived opaque bytes for illustration, not real libsignal output. Trading weights, Quatarly penalties and the flash-sale race are simulations. Each is labelled in the UI.
+- The Whispr repository is private until it is opened.

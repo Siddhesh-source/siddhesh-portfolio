@@ -1,6 +1,6 @@
 // Profile overview and the one core message. Edit here. Anything not stated by the owner or traceable to a repository stays out.
-// Email and education live in the shared ../../../src/data/profile.js so both sites stay in step.
-import { profile } from '../../../src/data/profile.js';
+// Email and education live in the profile.js.
+import { profile } from './profile.js';
 
 export const about = {
   headline: 'Software engineer. Products end to end, depth in AI, ML and infra.',

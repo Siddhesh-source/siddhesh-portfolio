@@ -1,4 +1,4 @@
-import { h } from '../../../src/lib/dom.js';
+import { h } from '../lib/dom.js';
 import { projects, profile } from '../data/files.js';
 import { about } from '../data/about.js';
 import { skills, AREAS, WORK, findSkills } from '../data/skills.js';

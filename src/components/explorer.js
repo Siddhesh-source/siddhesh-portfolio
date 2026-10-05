@@ -1,4 +1,4 @@
-import { h } from '../../../src/lib/dom.js';
+import { h } from '../lib/dom.js';
 import { files, DIRS } from '../data/files.js';
 import * as store from '../lib/store.js';
 

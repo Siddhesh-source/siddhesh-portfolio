@@ -1,5 +1,5 @@
-import { h } from '../../../src/lib/dom.js';
-import { createDiagram } from '../../../src/components/diagram.js';
+import { h } from '../lib/dom.js';
+import { createDiagram } from '../components/diagram.js';
 import { widgets } from '../widgets/index.js';
 import { profile, projects } from '../data/files.js';
 

@@ -1,29 +1,35 @@
 ---
 # gstack: design-md-format=spec
-name: Siddhesh Chaudhari portfolio
-description: Poster-scale colour chapters, one per project, each carrying a live widget that proves the claim.
+name: Siddhesh Chaudhari portfolio, Systems Console
+description: "An IDE and ops-console for a portfolio: dense, keyboard-first, flat, with a live simulation behind every project file."
 colors:
-  ink: "#0C0F12"
-  concrete: "#E8EBEE"
-  on-dark: "#FFFFFF"
-  cobalt: "#1B2BFF"
-  black: "#0C0C0C"
-  amber: "#FF9D2E"
-  green: "#0D7A3E"
-  mint: "#EAFFD9"
-  red: "#D92D20"
-  teal: "#0B6E7F"
-  yellow: "#F6D44A"
+  ground: "#0E1319"
+  surface: "#141B22"
+  line: "#243038"
+  text: "#DCE4EA"
+  text-muted: "#8795A1"
+  accent: "#7FB7FF"
+  on-accent: "#0E1319"
+  ok: "#7BD88F"
+  warn: "#F2C265"
+  error: "#FF7A7A"
+  ground-light: "#F4F6F8"
+  surface-light: "#FFFFFF"
+  line-light: "#D5DCE3"
+  text-light: "#121820"
+  text-muted-light: "#55616D"
+  accent-light: "#1F5FBF"
+  on-accent-light: "#FFFFFF"
 typography:
   display:
     fontFamily: Cabinet Grotesk
     fontWeight: 800
-    fontSize: clamp(2.5rem, 7vw, 6rem)
-    letterSpacing: -0.04em
+    fontSize: 2.5rem
+    letterSpacing: -0.03em
   body:
     fontFamily: General Sans
     fontWeight: 500
-    fontSize: 1.0625rem
+    fontSize: 0.9375rem
     lineHeight: 1.55
   label:
     fontFamily: JetBrains Mono
@@ -33,105 +39,102 @@ typography:
   mono:
     fontFamily: JetBrains Mono
     fontWeight: 400
+    fontSize: 0.8125rem
     fontFeature: tnum
 rounded:
   sm: 4px
-  md: 8px
-  lg: 12px
+  md: 6px
   full: 9999px
 spacing:
   xs: 4px
   sm: 8px
-  md: 16px
-  lg: 24px
-  xl: 32px
-  2xl: 48px
+  md: 12px
+  lg: 16px
+  xl: 24px
 ---
 
-# Siddhesh Chaudhari portfolio
+# Siddhesh Chaudhari portfolio, Systems Console
 
 ## Overview
 
-**Creative North Star:** An exhibit of working objects. Each project is a poster in its own colour, with something to touch, so the visitor learns how it works by using it.
-**Product context:** Personal portfolio of a software engineer (SDE first, targeting SDE plus AI, infra and ML roles) who builds end to end and goes deep in AI, ML and infra, with strong fundamentals (DBMS, networks, OS, DSA). Audience: engineers and hiring managers skimming for ten seconds, then reading one project closely.
-**Mode per surface:** Experience for the project chapters and hero. Read for any long copy. No Persuade surface.
+**Creative North Star:** A working console, not a brochure. Every project is a file you open, run and poke, so the visitor learns how it works by operating it.
+**Product context:** Portfolio of a software engineer (SDE first, targeting SDE plus AI, infra and ML roles): end to end, deep in AI, ML and infra, with strong fundamentals (DBMS, networks, OS, DSA). Audience: engineers and hiring managers who read code for a living.
+**Mode per surface:** Operate for the shell (explorer, tabs, terminal, palette). Experience for the welcome tab and project panes.
 **Memorable thing:** A software engineer who builds end to end and goes deep in AI, ML and infra.
 **Key characteristics:**
-- One flat colour owns the viewport at a time. The colour changes as you scroll.
-- Giant display type, tight tracking, left-aligned.
-- Facts set as display numerals (223, 10,000+, 0 oversold, 7.4e-06), each with a mono caption.
-- A live widget and a drawn diagram in every chapter.
-- No gradients, glow, blobs, particles, icon tiles or stat strips.
+- Dense and flat. Rows are 28px, borders are 1px, nothing glows.
+- Keyboard first. Every action has a key and a terminal command.
+- One accent. Status colours only ever mean state.
+- A live widget and a draggable architecture diagram for every project file.
 
 ## Colors
 
-**Strategy:** Drenched. One hue per chapter owns the surface; text is the paired colour. The hero uses the cool concrete neutral; the closing chapter uses ink.
-**Light or dark:** Decided by the chapter, not a toggle. Use scene: a laptop in daylight or an evening desk; saturated flat colour holds in both.
+**Strategy:** Restrained. One accent (ice blue) plus three status colours (ok, warn, error) that mean state and nothing else. Neutrals are tinted toward the accent hue.
+**Light or dark:** Dark is the default for long reading in dim rooms; light is an IDE theme switch for daylight. Both are first-class and checked.
 
-| Chapter | Surface | Text | Contrast |
-|---|---|---|---|
-| Hero | concrete | ink | 15:1 |
-| Whispr | cobalt | on-dark | 8:1 |
-| NexusOS | black | amber | 9:1 |
-| ccml | green | mint | 5.3:1 |
-| Flash Sale | red | on-dark | 5.0:1 |
-| Quatarly | teal | on-dark | 5.7:1 |
-| Trading Engine | yellow | ink | 13:1 |
-| Closing | ink | on-dark | 18:1 |
+| Pair | Dark | Light |
+|---|---|---|
+| text on ground | 14.6:1 | 17:1 |
+| text-muted on ground | 6.1:1 | 5.9:1 |
+| accent on surface | 9:1 | 6.5:1 |
+| on-accent on accent | 9:1 | 6.5:1 |
+| ok / warn / error on surface | each above 7:1 | status colours darken in light mode |
 
-Contrast is checked per pair before a colour ships. Interactive controls inside a chapter use the chapter's text colour as border and the inverse as fill. Overlays on a chapter use a black or white tint at 22 to 35 percent, never a new hue.
+`scripts/check.mjs` reads `src/styles/tokens.css` and fails below 4.5:1. The prototype's neon cyan was dropped as the near-black plus neon default.
 
 ## Typography
 
-Cabinet Grotesk (Fontshare) is the display voice: a utilitarian grotesk with enough character to carry giant type. General Sans (Fontshare) is the body: neutral and legible at 17px. JetBrains Mono (Google Fonts) carries labels, data and widget output. All three are self-hosted woff2 with `font-display: swap`. Instrument Sans was dropped because it is on the overused-as-display list.
-
-- Scale: ratio 1.333. Display is capped at 6rem so the page reads as chapters, not one poster.
-- Data as type: key facts are set as display numerals in the chapter, with a mono caption stating what they mean and where they come from.
-- Tabular numerals on all data.
+JetBrains Mono (Google Fonts, self-hosted) carries chrome, tree, tabs, terminal and all data at 13px with tabular numerals. General Sans (Fontshare, self-hosted) carries prose and pane headings. Cabinet Grotesk 800 (Fontshare, self-hosted) is used once, for the name on the welcome tab. All woff2 with `font-display: swap`; files live in `../assets/fonts`.
 
 ## Layout
 
-Twelve-column grid, 7vw side padding, chapters at least 100vh with scroll-snap. Headline spans the width; text sits left and the widget right. Asymmetry is deliberate. Below 860px everything stacks and snap relaxes. Max prose width 46ch.
+Top bar 32px, tabs 34px, tree rows 28px, status bar 24px. Explorer (160 to 420px), editor, inspector (240 to 520px), and a terminal panel (100px to 50vh). All three are resizable by drag or arrow keys on the separator, and collapsible. Below 860px the explorer is a drawer, the inspector folds under the widget, and the terminal is a bottom sheet. Density toggles between compact and comfortable.
 
 ## Elevation & Depth
 
-Flat. Depth comes from colour change between chapters and from 1.5px borders on widgets. Widget panels use a black tint at 22 percent over the chapter colour. No shadows, no blur, no glow.
+Flat. Depth is surface versus ground plus a 1px line. Menus and the palette sit on surface with a line border. No shadow, blur or glow.
 
 ## Shapes
 
-Radius hierarchy: sm 4px for chips and inputs, md 8px for buttons, lg 12px for widget panels. Nested elements use the outer radius minus the gap. Pills (full) are reserved for toggles and stack tags.
+4px for inputs, chips and tree rows. 6px for panels and the palette. Full radius only for toggles.
 
 ## Components
 
-- **Chapter:** full-viewport section with display headline, display numeral with mono caption, text column, tabbed panel (Try it, Architecture). No number label or kicker above the headline.
-- **Widget:** bordered panel, mono type. Every widget has a visible state, a reset, and an honest label when data is illustrative.
-- **Diagram:** inline SVG with draggable nodes and a trace control. Keyboard operable.
-- **Chapter rail:** fixed dots with progress. Links to chapters. j and k move between chapters.
-- **Command palette:** Ctrl K, lists chapters and links.
-- **States:** hover raises contrast, focus-visible uses a 2px outline in the text colour with 3px offset, disabled drops to 40 percent opacity.
+- **Explorer:** tree of folders and files with a kind dot, arrow-key and j/k navigation, Enter opens.
+- **Tabs:** close button, middle-click and Alt W close, Alt 1 to 9 jump.
+- **Editor pane:** heading, numeral line in mono, widget, facts. One idea per pane.
+- **Skills matrix:** chips grouped by area. Selecting a skill lists the projects that evidence it; selecting a project lights up its skills. Self-reported skills carry `*`.
+- **Fundamentals cards:** one per core subject (DBMS, networks, OS, DSA), each listing the real projects where it shows up. A profiles row appears only when links exist.
+- **Inspector:** draggable architecture diagram, stack chips, source link.
+- **Terminal:** real command line with history, completion and clickable suggestions.
+- **Palette:** Ctrl P quick-open (fuzzy), Ctrl K commands.
+- **Status bar:** branch, active file, theme, density, terminal toggle.
+- **States:** hover tints the row, focus-visible is a 2px accent outline with 2px offset, disabled is 40 percent.
 
 ## Do's and Don'ts
 
-- Do keep every claim traceable to a repo. Label simulations and illustrative values as such.
-- Do check contrast for each chapter pair before shipping a colour.
-- Do keep touch targets at 44px and every widget reachable by keyboard.
-- Do put one idea per chapter: one claim, one widget, one numeral.
-- Don't add gradients, glow, particles, blobs, wavy dividers or icon tiles.
-- Don't add a stats strip, a three-up card grid or a testimonial row.
-- Don't set display above 6rem or use a kicker above headlines.
-- Don't introduce a seventh accent hue; new chapters reuse the pairs above or get a new measured pair.
+- Do keep every claim traceable to a repo; label simulations and illustrative values.
+- Do give every action a keyboard path and a terminal command.
+- Do keep touch targets at 44px on coarse pointers and every widget operable by keyboard.
+- Don't use accent for decoration; it marks the active thing.
+- Don't add glow, gradients, blur, blobs or illustrations.
+- Don't add a stats strip, a card grid or a testimonial row.
+- Don't hide an action behind hover only.
 
 ## Motion
 
-- **Approach:** intentional.
+- **Approach:** intentional, mostly functional.
 - **Easing:** enter(ease-out) exit(ease-in) move(ease-in-out)
 - **Duration:** micro(50-100ms) short(150-250ms) medium(250-400ms) long(400-700ms)
-- **The one authored moment:** on chapter entry the headline rises 16px and fades in over 300ms, once. Bars grow on entry. Widgets respond to input only. Scroll-snap between chapters. `prefers-reduced-motion` disables all of it.
+- **The one authored moment:** a sub-second boot sequence on first visit per session, using real boot-log lines from the NexusOS README. Any key skips it. Simulations animate only on Run. `prefers-reduced-motion` disables all of it.
 
 ## Decisions Log
 | Date | Decision | Rationale |
 |------|----------|-----------|
-| 2026-10-05 | Initial system (amber, Instrument Sans, project index) | First build; judged generic and low on interactivity |
-| 2026-10-05 | Replaced with Exhibit direction: drenched colour chapters, live widgets | /design-shotgun, chosen by the owner over Console and Blueprint |
-| 2026-10-05 | Cabinet Grotesk + General Sans replace Instrument Sans | Instrument Sans is overused as display; both new faces verified on Fontshare |
-| 2026-10-05 | Data set as display numerals, no stat strip | Facts belong inside their project; a stat strip is a template tell |
+| 2026-10-05 | Console direction chosen over Exhibit and Blueprint | Owner chose prototype A |
+| 2026-10-05 | Console is the whole project; Exhibit moved to its own folder | Deploy only the console; shared code copied into src/lib and src/data |
+| 2026-10-05 | Ice-blue accent replaces neon cyan | Near-black plus neon is a default look; restrained accent is more distinctive |
+| 2026-10-05 | Dark default with light theme | IDE convention; use scene is reading code in dim or bright rooms |
+| 2026-10-05 | Terminal is a real interface | Matches the audience and gives every widget a keyboard path |
+| 2026-10-05 | Message reworded: software engineer, SDE first, with AI, ML and infra depth; education and email added | Owner target roles: SDE plus AI/infra/ML, SDE preferred |
+| 2026-10-05 | Core message is range plus depth, not a single specialty; DSA tracker detail removed, replaced by a fundamentals page | Owner direction: general-purpose engineer, end to end, strengthening DBMS, CN, OS, DSA |
