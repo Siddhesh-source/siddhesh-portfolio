@@ -34,7 +34,7 @@ typography:
   label:
     fontFamily: JetBrains Mono
     fontWeight: 500
-    fontSize: 0.6875rem
+    fontSize: 0.75rem
     letterSpacing: 0.08em
   mono:
     fontFamily: JetBrains Mono

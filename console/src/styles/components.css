@@ -7,7 +7,7 @@
 .tree .file i { width: 8px; height: 8px; border-radius: 2px; background: var(--k, var(--muted)); flex: none; }
 .tree .file:hover, .tree .dir:hover { background: color-mix(in srgb, var(--text) 7%, transparent); color: var(--text); }
 .tree .file[aria-current="true"] { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--text); border-left-color: var(--accent); }
-.tree-h { font: 500 0.6875rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 6px var(--pad); }
+.tree-h { font: 500 0.75rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 6px var(--pad); }
 
 /* Tabs */
 .tabs { display: flex; background: var(--surface); border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
@@ -26,7 +26,7 @@
 .pane p + p { margin-top: 8px; }
 .pane .grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: calc(var(--pad) * 2); margin-top: var(--pad); align-items: start; }
 .box { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); padding: var(--pad); min-width: 0; }
-.box h3 { font: 500 0.6875rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.box h3 { font: 500 0.75rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
 .kv { display: grid; grid-template-columns: 8.5rem 1fr; gap: 2px 12px; }
 .kv > :nth-child(odd) { color: var(--muted); }
 .kv > :nth-child(even) { overflow-wrap: anywhere; }
@@ -65,7 +65,7 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .w-row2:first-child { border-top: 0; }
 
 /* Inspector + diagram (diagram.js comes from ../../src/components) */
-.inspector h3 { font: 500 0.6875rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+.inspector h3 { font: 500 0.75rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
 .dg { width: 100%; height: auto; max-height: 300px; display: block; touch-action: none; user-select: none; color: var(--muted); --bg: var(--surface); }
 .dg .edge { stroke: currentColor; stroke-width: 1.2; fill: none; }
 .dg .node { cursor: grab; color: var(--text); }
@@ -80,7 +80,7 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 
 /* Terminal */
 .term { background: var(--ground); border-top: 1px solid var(--line); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; min-height: 0; font-size: var(--fs); }
-.term-h { display: flex; gap: 12px; align-items: center; padding: 0 var(--pad); height: 26px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.term-h { display: flex; gap: 12px; align-items: center; padding: 0 var(--pad); height: 26px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .term-h button { background: none; border: 0; cursor: pointer; color: inherit; margin-left: auto; }
 .term-out { overflow: auto; padding: 6px var(--pad); white-space: pre-wrap; word-break: break-word; }
 .sug { cursor: pointer; color: var(--accent); background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 3px; text-align: left; }
@@ -95,7 +95,7 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .pin { width: 100%; height: 40px; padding: 0 14px; background: none; border: 0; border-bottom: 1px solid var(--line); outline: none; font-size: 0.875rem; }
 .plist { list-style: none; padding: 4px; max-height: 320px; overflow: auto; }
 .plist li { display: flex; justify-content: space-between; gap: 12px; height: var(--row); align-items: center; padding: 0 10px; border-radius: var(--r-sm); cursor: pointer; }
-.plist li span { color: var(--muted); font-size: 0.6875rem; }
+.plist li span { color: var(--muted); font-size: 0.75rem; }
 .plist li[aria-selected="true"] { background: color-mix(in srgb, var(--accent) 18%, transparent); }
 
 /* Boot overlay */
