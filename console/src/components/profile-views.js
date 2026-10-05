@@ -26,8 +26,7 @@ export function aboutView(host, app) {
     h('div', { class: 'grid' },
       h('div', { class: 'box' }, h('h3', {}, 'Range, depth, fundamentals'), kv(about.focus)),
       h('div', { class: 'box' }, h('h3', {}, 'Overview'),
-        kv([['projects', `${total} (${projects.length} featured, ${archive.length} more)`], ['languages', String(langs)], ['skills', String(skills.length)], ['experience', `${profile.experience.length} roles`]]),
-
+        kv([['projects', `${total} (${projects.length} featured, ${archive.length} more)`], ['languages', String(langs)], ['skills', String(skills.length)], ['experience', `${profile.experience.length} roles`]]))),
     h('div', { class: 'grid c3' },
       h('div', { class: 'box' }, h('h3', {}, 'Skills'), h('p', {}, 'Each skill with the projects that prove it.'), cmd('open skills.yaml')),
       h('div', { class: 'box' }, h('h3', {}, 'Fundamentals'), h('p', {}, 'DBMS, networks, OS, DSA, and where each shows up.'), cmd('open fundamentals.md')),
