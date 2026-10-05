@@ -2,6 +2,9 @@ import { h } from '../../../src/lib/dom.js';
 import { byId } from '../data/files.js';
 import * as store from '../lib/store.js';
 import { readmeView, experienceView, projectView, inspectorView } from './views.js';
+import { aboutView, skillsView, moreView, dsaView, nowView, contactView } from './profile-views.js';
+
+const VIEWS = { readme: readmeView, about: aboutView, skills: skillsView, exp: experienceView, contact: contactView, more: moreView, dsa: dsaView, now: nowView };
 
 /** Renders the active file into the editor pane and the inspector, cleaning up the previous widgets. */
 export function mountEditor(pane, inspector, app) {
@@ -12,9 +15,8 @@ export function mountEditor(pane, inspector, app) {
     pane.replaceChildren(); inspector.replaceChildren();
     const f = byId(store.get().active);
     pane.setAttribute('aria-labelledby', `tab-${f.id}`);
-    if (f.id === 'readme') cleanups.push(readmeView(pane, app));
-    else if (f.id === 'exp') cleanups.push(experienceView(pane));
-    else cleanups.push(projectView(pane, f.project));
+    if (f.project) cleanups.push(projectView(pane, f.project));
+    else cleanups.push(VIEWS[f.view](pane, app));
     inspectorView(inspector, f, app);
     pane.scrollTop = 0;
   }

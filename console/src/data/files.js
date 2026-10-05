@@ -1,4 +1,4 @@
-// The virtual file system shown in the explorer. Content comes from the shared data in ../../../src/data.
+// The virtual file system shown in the explorer. Project content comes from the shared data in ../../../src/data.
 import { projects } from '../../../src/data/projects.js';
 import { profile } from '../../../src/data/profile.js';
 
@@ -11,13 +11,22 @@ const NAMES = {
   trade: 'trading.py',
 };
 
-/** @typedef {{id:string, name:string, dir:string, path:string, title:string, project?:object}} VFile */
+/** Folders in display order. */
+export const DIRS = ['projects', 'learning'];
+
+/** @typedef {{id:string, name:string, dir:string, path:string, title:string, view?:string, project?:object}} VFile */
 
 /** @type {VFile[]} */
 export const files = [
-  { id: 'readme', name: 'README.md', dir: '', path: 'README.md', title: 'README' },
-  { id: 'exp', name: 'experience.yaml', dir: '', path: 'experience.yaml', title: 'Experience' },
+  { id: 'readme', name: 'README.md', dir: '', path: 'README.md', title: 'README', view: 'readme' },
+  { id: 'about', name: 'about.md', dir: '', path: 'about.md', title: 'About', view: 'about' },
+  { id: 'skills', name: 'skills.yaml', dir: '', path: 'skills.yaml', title: 'Skills', view: 'skills' },
+  { id: 'exp', name: 'experience.yaml', dir: '', path: 'experience.yaml', title: 'Experience', view: 'exp' },
+  { id: 'contact', name: 'contact.md', dir: '', path: 'contact.md', title: 'Contact', view: 'contact' },
   ...projects.map((p) => ({ id: p.id, name: NAMES[p.id] || `${p.id}.md`, dir: 'projects', path: `projects/${NAMES[p.id] || p.id + '.md'}`, title: p.name, project: p })),
+  { id: 'more', name: 'more.md', dir: 'projects', path: 'projects/more.md', title: 'More projects', view: 'more' },
+  { id: 'dsa', name: 'dsa.md', dir: 'learning', path: 'learning/dsa.md', title: 'DSA', view: 'dsa' },
+  { id: 'now', name: 'now.md', dir: 'learning', path: 'learning/now.md', title: 'Now', view: 'now' },
 ];
 
 export const byId = (id) => files.find((f) => f.id === id);

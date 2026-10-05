@@ -29,7 +29,7 @@
 .box h3 { font: 500 0.6875rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
 .kv { display: grid; grid-template-columns: 8.5rem 1fr; gap: 2px 12px; }
 .kv > :nth-child(odd) { color: var(--muted); }
-.kv > :nth-child(even) { word-break: break-all; }
+.kv > :nth-child(even) { overflow-wrap: anywhere; }
 .log { white-space: pre-wrap; min-height: 6.5em; }
 .ctl { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0; }
 .btn { height: 28px; padding: 0 10px; background: transparent; border: 1px solid var(--line); border-radius: var(--r-sm); cursor: pointer; font-size: 0.75rem; }
@@ -50,6 +50,19 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; list-style: none; padding: 0; }
 .chips li { border: 1px solid var(--line); border-radius: var(--r-sm); padding: 1px 8px; font-size: 0.75rem; color: var(--muted); }
 .big-num { font: 600 2rem / 1 var(--mono); font-feature-settings: "tnum"; color: var(--text); }
+
+/* Profile views */
+.pane .grid.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pane input[type="search"] { height: 28px; }
+.sk { background: transparent; border: 1px solid var(--line); border-radius: var(--r-sm); padding: 1px 8px; cursor: pointer; font-size: 0.75rem; color: var(--muted); height: 24px; }
+.sk:hover { border-color: var(--accent); color: var(--text); }
+.sk[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.sk.hit { border-color: var(--accent); color: var(--text); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.sk.dim { opacity: 0.35; }
+.row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.w-row2 { display: grid; grid-template-columns: 1fr auto; gap: 0 12px; padding: 6px 0; border-top: 1px solid var(--line); font-size: 0.75rem; }
+.w-row2 > :nth-child(3) { grid-column: 1 / -1; }
+.w-row2:first-child { border-top: 0; }
 
 /* Inspector + diagram (diagram.js comes from ../../src/components) */
 .inspector h3 { font: 500 0.6875rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
@@ -91,7 +104,7 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .boot small { position: absolute; right: 24px; bottom: 16px; }
 
 @media (max-width: 860px) {
-  .pane .grid { grid-template-columns: minmax(0, 1fr); }
+  .pane .grid, .pane .grid.c3 { grid-template-columns: minmax(0, 1fr); }
   .bar { grid-template-columns: 5rem 1fr; } .bar > :last-child { grid-column: 1 / -1; }
 }
 @media (pointer: coarse) { .btn, .tab .x, .status button { min-height: 44px; min-width: 44px; } .tree .dir, .tree .file { height: 44px; } }

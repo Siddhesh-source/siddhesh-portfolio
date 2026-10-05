@@ -43,6 +43,27 @@ const names = createCommands({ get: () => ({}) }).map((c) => c.name);
 if (new Set(names).size !== names.length) fail('duplicate command names');
 if (!failures) ok(`${files.length} files, ${names.length} commands, ${Object.keys(widgets).length} widgets`);
 
+/* ---- profile data ---- */
+const { skills } = await import(pathToFileURL(resolve(root, 'src/data/skills.js')).href);
+const { archive } = await import(pathToFileURL(resolve(root, 'src/data/archive.js')).href);
+const { dsaRepo, roadmap, STATUS_LABEL } = await import(pathToFileURL(resolve(root, 'src/data/learning.js')).href);
+const { projects } = await import(pathToFileURL(resolve(root, '../src/data/projects.js')).href);
+const evidence = new Set([...projects.map((p) => p.id), ...archive.map((a) => a.id), 'rink9', 'taxbharo', 'dsa']);
+const seen = new Set();
+for (const a of archive) {
+  if (seen.has(a.id)) fail(`duplicate archive id ${a.id}`); seen.add(a.id);
+  if (!/^https:\/\/github\.com\//.test(a.href)) fail(`${a.id}: href must be a github https link`);
+  for (const k of ['name', 'kind', 'desc', 'stack', 'year']) if (!a[k]) fail(`${a.id} missing ${k}`);
+}
+const skillNames = new Set();
+for (const sk of skills) {
+  if (skillNames.has(sk.name)) fail(`duplicate skill ${sk.name}`); skillNames.add(sk.name);
+  for (const id of sk.used) if (!evidence.has(id)) fail(`skill ${sk.name} cites unknown evidence "${id}"`);
+}
+if (dsaRepo.groups.reduce((a, [, n]) => a + n, 0) !== dsaRepo.solutions) fail('DSA group counts do not sum to solutions');
+for (const r of roadmap) if (!STATUS_LABEL[r.status]) fail(`roadmap ${r.topic}: bad status ${r.status}`);
+if (!failures) ok(`${skills.length} skills, ${archive.length} archive projects, ${roadmap.length} roadmap topics`);
+
 /* ---- simulation invariants (shared logic) ---- */
 const { simulate } = await import(pathToFileURL(resolve(root, '../src/widgets/flash.js')).href);
 for (const n of [100, 800, 2000]) (simulate(n, true).at(-1).oversold === 0 ? ok : fail)(`atomic never oversells at ${n}`);

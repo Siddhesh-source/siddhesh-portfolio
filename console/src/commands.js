@@ -1,6 +1,11 @@
 // One command registry used by the terminal and the command palette.
 import { files, byName, profile, projects } from './data/files.js';
 import { widgets } from './widgets/index.js';
+import { skills, AREAS } from './data/skills.js';
+import { evidenceName } from './components/profile-views.js';
+import { archive, KINDS } from './data/archive.js';
+import { dsaRepo, roadmap, STATUS_LABEL, now } from './data/learning.js';
+import { about } from './data/about.js';
 
 const PANELS = { explorer: 'exp', inspector: 'ins', terminal: 'term' };
 
@@ -22,6 +27,11 @@ export function createCommands(app) {
         if (!f) return out(`no such file: ${a.join(' ')}`, 'err');
         if (f.project) { const p = f.project; out(`${p.name}  ${p.numeral}  ${p.caption}`, 'acc'); p.text.forEach((t) => out(t)); out(`stack: ${p.stack.join(', ')}`, 'muted'); out(p.link.href, 'muted'); }
         else if (f.id === 'exp') profile.experience.forEach((e) => { out(`${e.org}: ${e.what}`); out(`  ${e.stack}`, 'muted'); });
+        else if (f.id === 'about') { out(about.headline, 'acc'); about.summary.forEach((t) => out(t)); }
+        else if (f.id === 'skills') AREAS.forEach((a) => out(`${a.padEnd(21)} ${skills.filter((x) => x.area === a).map((x) => x.name).join(', ')}`));
+        else if (f.id === 'more') archive.forEach((a) => out(`${a.name.padEnd(26)} ${a.kind}`));
+        else if (f.id === 'dsa') roadmap.forEach((r) => out(`${r.topic.padEnd(28)} ${STATUS_LABEL[r.status]}`));
+        else if (f.id === 'now') { now.building.forEach((i) => out(`building  ${i.what}: ${i.detail}`)); now.learning.forEach((i) => out(`learning  ${i.what}: ${i.detail}`, 'muted')); }
         else { out(profile.title, 'acc'); out(profile.lede); }
       },
     },
@@ -33,6 +43,20 @@ export function createCommands(app) {
         await w.run(a.slice(1), out);
       },
     },
+    {
+      name: 'skills', args: '[skill]', desc: 'list skills, or the projects that use one',
+      run: (a, out) => {
+        if (!a.length) return AREAS.forEach((ar) => out(`${ar.padEnd(21)} ${skills.filter((x) => x.area === ar).map((x) => x.name).join(', ')}`));
+        const q = a.join(' ').toLowerCase();
+        const hit = skills.filter((x) => x.name.toLowerCase().includes(q));
+        if (!hit.length) return out(`no skill matches "${q}"`, 'err');
+        hit.forEach((x) => out(`${x.name.padEnd(26)} ${x.used.length ? x.used.map(evidenceName).join(', ') : 'self-reported (no public repo yet)'}`, x.used.length ? '' : 'muted'));
+      },
+    },
+    { name: 'dsa', desc: 'DSA repo stats and roadmap', run: (_a, out) => { out(`${dsaRepo.solutions} ${dsaRepo.language} solutions (${dsaRepo.groups.map(([k, n]) => `${k} ${n}`).join(', ')})`, 'acc'); roadmap.forEach((r) => out(`${r.topic.padEnd(28)} ${STATUS_LABEL[r.status].padEnd(15)} ${r.note}`, r.status === 'planned' ? 'muted' : '')); } },
+    { name: 'now', desc: 'what I am building and learning', run: (_a, out) => { now.building.forEach((i) => out(`building  ${i.what}: ${i.detail}`)); now.learning.forEach((i) => out(`learning  ${i.what}: ${i.detail}`, 'muted')); } },
+    { name: 'more', args: '[kind]', desc: 'list other GitHub projects', run: (a, out) => { const k = a.join(' ').toLowerCase(); const rows = archive.filter((x) => !k || x.kind.toLowerCase() === k); if (!rows.length) return out(`kinds: ${KINDS.join(', ')}`, 'muted'); rows.forEach((x) => out(`${x.name.padEnd(26)} ${x.kind.padEnd(10)} ${x.href}`)); } },
+    { name: 'about', desc: 'profile overview', run: (_a, out) => { out(about.headline, 'acc'); about.summary.forEach((t) => out(t)); } },
     { name: 'stack', desc: 'print the tech stack', run: (_a, out) => profile.stack.forEach(([k, v]) => out(`${k.padEnd(15)} ${v}`)) },
     { name: 'links', desc: 'print profile links', run: (_a, out) => profile.links.forEach((l) => out(`${l.label.padEnd(9)} ${l.href}`)) },
     { name: 'whoami', desc: 'who is this', run: (_a, out) => { out(profile.name, 'acc'); out(profile.lede); } },

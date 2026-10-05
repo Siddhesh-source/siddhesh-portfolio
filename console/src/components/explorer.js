@@ -1,5 +1,5 @@
 import { h } from '../../../src/lib/dom.js';
-import { files } from '../data/files.js';
+import { files, DIRS } from '../data/files.js';
 import * as store from '../lib/store.js';
 
 /** File tree. Arrow keys or j/k move, Enter opens, Left/Right collapse and expand folders. */
@@ -12,9 +12,11 @@ export function mountExplorer(host, app) {
     const file = (f, depth) => h('li', { class: 'file', role: 'treeitem', tabindex: -1, 'data-id': f.id, 'aria-current': String(s.active === f.id), style: { '--depth': depth } }, h('i'), f.name);
     items.push(h('li', { class: 'dir', role: 'treeitem', tabindex: -1, 'aria-expanded': 'true', style: { '--depth': 0, cursor: 'default' } }, 'portfolio'));
     files.filter((f) => !f.dir).forEach((f) => items.push(file(f, 1)));
-    const open = s.dirs.projects !== false;
-    items.push(h('li', { class: 'dir', role: 'treeitem', tabindex: -1, 'data-dir': 'projects', 'aria-expanded': String(open), style: { '--depth': 1 } }, 'projects'));
-    if (open) files.filter((f) => f.dir === 'projects').forEach((f) => items.push(file(f, 2)));
+    for (const dir of DIRS) {
+      const open = s.dirs[dir] !== false;
+      items.push(h('li', { class: 'dir', role: 'treeitem', tabindex: -1, 'data-dir': dir, 'aria-expanded': String(open), style: { '--depth': 1 } }, dir));
+      if (open) files.filter((f) => f.dir === dir).forEach((f) => items.push(file(f, 2)));
+    }
     root.replaceChildren(...items);
   }
 
