@@ -1,4 +1,5 @@
 :root {
+  color-scheme: dark;
   --bg: #0f1117; --bg2: #151823; --card: #171b27; --line: #272c3f; --text: #d5dbf5; --muted: #8a91b4;
   --blue: #7aa2f7; --purple: #bb9af7; --green: #9ece6a; --orange: #ff9e64; --red: #f7768e; --cyan: #7dcfff; --yellow: #e0af68;
   --grad: linear-gradient(90deg, var(--blue), var(--purple) 60%, var(--cyan));
@@ -8,6 +9,7 @@
   --r: 14px;
 }
 [data-theme="light"] {
+  color-scheme: light;
   --bg: #f6f7fb; --bg2: #eceef6; --card: #ffffff; --line: #dde1ee; --text: #1c2033; --muted: #636a8a;
   --blue: #2e5bd8; --purple: #7c3aed; --green: #2f855a; --orange: #c2570c; --red: #d6336c; --cyan: #0b7fa8; --yellow: #a16207;
 }
@@ -175,3 +177,6 @@ h1 { font-size: clamp(38px, 6vw, 62px); margin: 18px 0 10px; }
   .filters button, .nav nav a { display: inline-flex; align-items: center; }
   .p-link, .logo { display: inline-flex; align-items: center; min-height: 44px; }
 }
+
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+::selection { background: color-mix(in srgb, var(--blue) 35%, transparent); }
