@@ -58,9 +58,9 @@ spacing:
 ## Overview
 
 **Creative North Star:** A working console, not a brochure. Every project is a file you open, run and poke, so the visitor learns how it works by operating it.
-**Product context:** Developer portfolio (full stack, AI/ML, infra, distributed systems, internals). Audience: engineers and hiring managers who read code for a living.
+**Product context:** Portfolio of a general-purpose engineer: efficient across domains, end to end, deep where it counts, with strong fundamentals (DBMS, networks, OS, DSA). Audience: engineers and hiring managers who read code for a living.
 **Mode per surface:** Operate for the shell (explorer, tabs, terminal, palette). Experience for the welcome tab and project panes.
-**Memorable thing:** He knows what is under the hood.
+**Memorable thing:** A general-purpose engineer who works end to end and goes deep when it counts.
 **Key characteristics:**
 - Dense and flat. Rows are 28px, borders are 1px, nothing glows.
 - Keyboard first. Every action has a key and a terminal command.
@@ -104,7 +104,7 @@ Flat. Depth is surface versus ground plus a 1px line. Menus and the palette sit 
 - **Tabs:** close button, middle-click and Alt W close, Alt 1 to 9 jump.
 - **Editor pane:** heading, numeral line in mono, widget, facts. One idea per pane.
 - **Skills matrix:** chips grouped by area. Selecting a skill lists the projects that evidence it; selecting a project lights up its skills. Self-reported skills carry `*`.
-- **Roadmap rows:** topic, status in words (solved, lab, lectures, planned), one-line note. Status is never decoration.
+- **Fundamentals cards:** one per core subject (DBMS, networks, OS, DSA), each listing the real projects where it shows up. A profiles row appears only when links exist.
 - **Inspector:** draggable architecture diagram, stack chips, source link.
 - **Terminal:** real command line with history, completion and clickable suggestions.
 - **Palette:** Ctrl P quick-open (fuzzy), Ctrl K commands.
@@ -135,3 +135,4 @@ Flat. Depth is surface versus ground plus a 1px line. Menus and the palette sit 
 | 2026-10-05 | Ice-blue accent replaces neon cyan | Near-black plus neon is a default look; restrained accent is more distinctive |
 | 2026-10-05 | Dark default with light theme | IDE convention; use scene is reading code in dim or bright rooms |
 | 2026-10-05 | Terminal is a real interface | Matches the audience and gives every widget a keyboard path |
+| 2026-10-05 | Core message is range plus depth, not a single specialty; DSA tracker detail removed, replaced by a fundamentals page | Owner direction: general-purpose engineer, end to end, strengthening DBMS, CN, OS, DSA |

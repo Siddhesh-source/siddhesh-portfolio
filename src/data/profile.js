@@ -1,7 +1,7 @@
 export const profile = {
   name: 'Siddhesh Chaudhari',
   title: 'I build systems end to end.',
-  lede: 'Software engineer: full stack, AI/ML and infra, with a bias for the layers underneath. I care most about distributed systems, scaling and efficient design.',
+  lede: 'General-purpose engineer. I work efficiently across domains, from web and ML to infra and systems, take things end to end, and go deep when a problem needs it. I keep strengthening the fundamentals: DBMS, networks, operating systems and DSA.',
   links: [
     { label: 'GitHub', href: 'https://github.com/Siddhesh-source' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/siddhesh-chaudhari3011' },

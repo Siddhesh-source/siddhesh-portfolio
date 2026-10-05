@@ -36,10 +36,10 @@ ES modules need HTTP, so serve from the repo root (the console imports `../src/d
 | `experience.yaml` | roles |
 | `contact.md` | links (email and resume appear automatically once set in `data/about.js`) |
 | `projects/` | the six featured projects with live widgets, plus `more.md` (13 other GitHub projects, filter and sort) |
-| `learning/dsa.md` | DSA repo stats and an 11-topic roadmap with honest status per topic |
+| `learning/fundamentals.md` | DBMS, networks, OS and DSA, each tied to the real projects where it shows up; a profiles row appears once links are added |
 | `learning/now.md` | what I am building and learning |
 
-Terminal: `help`, `ls`, `open <file>`, `cat <file>`, `run flash --n 800`, `run nexus`, `run ccml`, `run whispr "hi"`, `run quat phone, book`, `run trade 0.6 0.7 0.4`, `theme light`, `density comfortable`, `skills go`, `dsa`, `now`, `more ML`, `about`, `toggle terminal`. Tab completes, Up/Down is history.
+Terminal: `help`, `ls`, `open <file>`, `cat <file>`, `run flash --n 800`, `run nexus`, `run ccml`, `run whispr "hi"`, `run quat phone, book`, `run trade 0.6 0.7 0.4`, `theme light`, `density comfortable`, `skills go`, `fundamentals`, `now`, `more ML`, `about`, `toggle terminal`. Tab completes, Up/Down is history.
 
 Tabs, theme, density and pane sizes persist in localStorage. Deep links work: `/console/#/flash`.
 
@@ -76,5 +76,5 @@ Add it to `../src/data/projects.js`, then create `console/src/widgets/<id>.js` e
 - Profile text, education, resume link, email: `src/data/about.js` (empty fields stay hidden).
 - Skills and their evidence: `src/data/skills.js`. A skill with no evidence is shown as self-reported.
 - Other GitHub projects: `src/data/archive.js`. Check each against its README first.
-- DSA and learning: `src/data/learning.js`.
-- `npm run check:console` fails on unknown evidence ids, duplicate entries, non-GitHub links and DSA counts that do not add up.
+- Core subjects, profile links (`profiles: [{ label, href }]`, https only) and what I am working on now: `src/data/learning.js`.
+- `npm run check:console` fails on unknown evidence ids, duplicate entries, non-GitHub links, subjects without evidence and non-https profile links.
