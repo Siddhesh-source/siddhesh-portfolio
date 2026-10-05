@@ -2,6 +2,11 @@
 
 Personal developer portfolio: poster-scale colour chapters, one per project, each with a live widget and a draggable architecture diagram. Static site, native ES modules, **no build step and no dependencies**.
 
+## Two versions
+
+- `/` Exhibit: colour chapters, one per project, each with a live demo.
+- `/console/` Systems Console: an IDE-style portfolio with a terminal, palette and skills, fundamentals and more-projects pages. See `console/README.md`.
+
 ## Run
 
 ```sh
